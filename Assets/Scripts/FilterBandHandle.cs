@@ -39,7 +39,9 @@ public class FilterBandHandle : MonoBehaviour, IDragHandler
 
     private void SendFilterUpdate(float freq, float gain)
     {
-        var msg = new OSCMessage($"{oscAddressRoot}/{bandIndex}");
+        var msg = new OSCMessage($"{oscAddressRoot}");
+                                 //$"/{bandIndex}");
+        msg.AddValue(OSCValue.Int(bandIndex));
         msg.AddValue(OSCValue.Float(freq));
         msg.AddValue(OSCValue.Float(gain));
         transmitter.Send(msg);
