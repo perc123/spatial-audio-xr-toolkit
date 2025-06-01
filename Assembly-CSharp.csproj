@@ -63,6 +63,7 @@
     <Compile Include="Assets\extOSC\Examples\11) Array\Scripts\ArrayExample.cs" />
     <Compile Include="Assets\extOSC\Examples\03) Events\Scripts\EventsExample.cs" />
     <Compile Include="Assets\extOSC\Examples\13) Marshalling\Scripts\MarshallingExample.cs" />
+    <Compile Include="Assets\Scripts\ToggleColorChanger.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
