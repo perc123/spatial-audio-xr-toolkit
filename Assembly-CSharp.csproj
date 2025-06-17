@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\OSC.cs" />
     <Compile Include="Assets\extOSC\Examples\01) Getting Started\Scripts\SimpleMessageTransmitter.cs" />
     <Compile Include="Assets\extOSC\Examples\11) Array\Scripts\ArrayExample.cs" />
+    <Compile Include="Assets\Scripts\SpeakerManager.cs" />
     <Compile Include="Assets\extOSC\Examples\03) Events\Scripts\EventsExample.cs" />
     <Compile Include="Assets\extOSC\Examples\13) Marshalling\Scripts\MarshallingExample.cs" />
     <Compile Include="Assets\Scripts\ToggleColorChanger.cs" />
