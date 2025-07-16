@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 76.0, 1212.0, 562.0 ],
+		"rect" : [ 1954.0, 77.0, 1852.0, 921.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,154 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-50",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 916.0, 1002.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-48",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 916.0, 964.0, 58.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-46",
+					"maxclass" : "newobj",
+					"numinlets" : 4,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 992.75, 964.0, 115.0, 22.0 ],
+					"text" : "pak /listener/xyz f f f"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-45",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "spat5.gui.control.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1267.0, 1092.0, 298.0, 39.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-43",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "spat5.gui.control.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1279.0, 964.0, 298.0, 39.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-41",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 993.0, 1078.0, 81.0, 22.0 ],
+					"text" : "spat5.abs2rel"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-39",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 992.75, 1032.0, 458.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"parameter_enable" : 0
+					}
+,
+					"text" : "spat5.viewer @initwith \"/source/number 3, /listener/editable 1, /window/title absolute\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-38",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 997.75, 1149.0, 223.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"parameter_enable" : 0
+					}
+,
+					"text" : "spat5.oper @initwith \"/source/number 3\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-36",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 966.0, 1217.0, 418.0, 60.0 ],
+					"text" : "IRCAM object that contains the spatialization algorythm. Uses the HRTF Head related transfer function.\n@inputs is the number of input sources\n@outputs the number of output sources"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-33",
+					"maxclass" : "newobj",
+					"numinlets" : 3,
+					"numoutlets" : 3,
+					"outlettype" : [ "signal", "signal", "" ],
+					"patching_rect" : [ 577.0, 1212.0, 375.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"parameter_enable" : 0
+					}
+,
+					"text" : "spat5.spat~ @inputs 3 @outputs 2 @initwith \"/panning/type binaural\""
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-55",
 					"linecount" : 2,
@@ -1132,6 +1280,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"source" : [ "obj-38", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-41", 0 ],
+					"source" : [ "obj-39", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-35", 0 ],
 					"order" : 0,
 					"source" : [ "obj-40", 0 ]
@@ -1143,6 +1305,13 @@
 					"destination" : [ "obj-52", 0 ],
 					"order" : 1,
 					"source" : [ "obj-40", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"source" : [ "obj-41", 0 ]
 				}
 
 			}
@@ -1164,6 +1333,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-39", 0 ],
+					"source" : [ "obj-43", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-35", 0 ],
 					"order" : 0,
 					"source" : [ "obj-44", 0 ]
@@ -1180,6 +1356,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"source" : [ "obj-45", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-39", 0 ],
+					"source" : [ "obj-46", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-35", 0 ],
 					"order" : 0,
 					"source" : [ "obj-47", 0 ]
@@ -1191,6 +1381,13 @@
 					"destination" : [ "obj-52", 0 ],
 					"order" : 1,
 					"source" : [ "obj-47", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-50", 0 ],
+					"source" : [ "obj-48", 0 ]
 				}
 
 			}
@@ -1205,6 +1402,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-39", 0 ],
+					"source" : [ "obj-50", 0 ]
 				}
 
 			}
@@ -1505,23 +1709,35 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-16" : [ "live.gain~[4]", "live.gain~[2]", 0 ],
 			"obj-28" : [ "live.gain~[2]", "live.gain~[2]", 0 ],
-			"obj-14" : [ "live.gain~[8]", "live.gain~[2]", 0 ],
-			"obj-29" : [ "live.gain~[16]", "live.gain~[2]", 0 ],
-			"obj-25" : [ "live.gain~[13]", "live.gain~[2]", 0 ],
-			"obj-17" : [ "live.gain~[9]", "live.gain~[2]", 0 ],
 			"obj-12" : [ "live.gain~[7]", "live.gain~[2]", 0 ],
+			"obj-45::obj-62" : [ "live.text[15]", "live.text[9]", 0 ],
+			"obj-43::obj-62" : [ "live.text[12]", "live.text[9]", 0 ],
 			"obj-27" : [ "live.gain~[15]", "live.gain~[2]", 0 ],
+			"obj-43::obj-57" : [ "live.text[9]", "live.text[9]", 0 ],
 			"obj-18" : [ "live.gain~[5]", "live.gain~[2]", 0 ],
-			"obj-31" : [ "mc.live.gain~", "mc.live.gain~", 0 ],
-			"obj-15" : [ "live.gain~[3]", "live.gain~[2]", 0 ],
 			"obj-24" : [ "live.gain~[12]", "live.gain~[2]", 0 ],
-			"obj-20" : [ "live.gain~[10]", "live.gain~[2]", 0 ],
-			"obj-21" : [ "live.gain~[11]", "live.gain~[2]", 0 ],
+			"obj-15" : [ "live.gain~[3]", "live.gain~[2]", 0 ],
+			"obj-43::obj-102" : [ "live.toggle[436]", "live.toggle", 0 ],
+			"obj-45::obj-72" : [ "live.text[17]", "live.text[8]", 0 ],
+			"obj-45::obj-57" : [ "live.text[2]", "live.text[9]", 0 ],
+			"obj-17" : [ "live.gain~[9]", "live.gain~[2]", 0 ],
 			"obj-30" : [ "live.gain~[17]", "live.gain~[2]", 0 ],
 			"obj-10" : [ "live.gain~[6]", "live.gain~[2]", 0 ],
+			"obj-31" : [ "mc.live.gain~", "mc.live.gain~", 0 ],
+			"obj-45::obj-102" : [ "live.toggle[1]", "live.toggle", 0 ],
 			"obj-26" : [ "live.gain~[14]", "live.gain~[2]", 0 ],
+			"obj-45::obj-58" : [ "live.text[3]", "live.text[9]", 0 ],
+			"obj-43::obj-58" : [ "live.text[10]", "live.text[9]", 0 ],
+			"obj-20" : [ "live.gain~[10]", "live.gain~[2]", 0 ],
+			"obj-21" : [ "live.gain~[11]", "live.gain~[2]", 0 ],
+			"obj-16" : [ "live.gain~[4]", "live.gain~[2]", 0 ],
+			"obj-43::obj-72" : [ "live.text[14]", "live.text[8]", 0 ],
+			"obj-14" : [ "live.gain~[8]", "live.gain~[2]", 0 ],
+			"obj-45::obj-3" : [ "live.text[16]", "live.text[9]", 0 ],
+			"obj-43::obj-3" : [ "live.text[1]", "live.text[9]", 0 ],
+			"obj-29" : [ "live.gain~[16]", "live.gain~[2]", 0 ],
+			"obj-25" : [ "live.gain~[13]", "live.gain~[2]", 0 ],
 			"parameterbanks" : 			{
 
 			}
@@ -1529,7 +1745,40 @@
 		}
 ,
 		"dependency_cache" : [ 			{
+				"name" : "spat5.gui.control.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/spat5-x64/patchers",
+				"patcherrelativepath" : "../Documents/Max 8/Packages/spat5-x64/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "thru.maxpat",
+				"bootpath" : "C74:/patchers/m4l/Pluggo for Live resources/patches",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "OSC-route.mxe64",
+				"type" : "mx64"
+			}
+, 			{
+				"name" : "spat5.spat~.mxe64",
+				"type" : "mx64"
+			}
+, 			{
+				"name" : "spat5.oper.mxe64",
+				"type" : "mx64"
+			}
+, 			{
+				"name" : "spat5.viewer.mxe64",
+				"type" : "mx64"
+			}
+, 			{
+				"name" : "spat5.abs2rel.mxe64",
+				"type" : "mx64"
+			}
+, 			{
+				"name" : "spat5.osc.route.mxe64",
 				"type" : "mx64"
 			}
  ],
