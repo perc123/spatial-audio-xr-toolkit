@@ -759,7 +759,7 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: EXTOSC
+    Android: EXTOSC;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
     EmbeddedLinux: EXTOSC
     GameCoreXboxOne: EXTOSC
     Nintendo Switch: EXTOSC
@@ -767,9 +767,10 @@ PlayerSettings:
     PS5: EXTOSC
     QNX: EXTOSC
     Stadia: EXTOSC
-    Standalone: EXTOSC
+    Standalone: EXTOSC;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
     VisionOS: EXTOSC
     WebGL: EXTOSC
+    Windows Store Apps: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
     XboxOne: EXTOSC
     tvOS: EXTOSC
   additionalCompilerArguments: {}
@@ -882,7 +883,7 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 2
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
