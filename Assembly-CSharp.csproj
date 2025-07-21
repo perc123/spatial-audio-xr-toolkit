@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Assets\extOSC\Examples\10) Ping\Scripts\PingExample.cs" />
     <Compile Include="Assets\Scripts\TabManager.cs" />
+    <Compile Include="Assets\Scripts\SpeakerTransformSender.cs" />
     <Compile Include="Assets\Scripts\VolumeSender.cs" />
     <Compile Include="Assets\extOSC\Examples\06) Mapping\Scripts\MappingExample.cs" />
     <Compile Include="Assets\extOSC\Examples\01) Getting Started\Scripts\SimpleMessageReceiver.cs" />
