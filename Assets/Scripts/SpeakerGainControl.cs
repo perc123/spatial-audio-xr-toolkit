@@ -2,97 +2,238 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using extOSC;
-using UnityEngine.Events; // Assuming you're using extOSC
 
 public class SpeakerGainControl : MonoBehaviour
 {
-    public int speakerID = 1;  // This will define the OSC address: /vol{ID}
+    [Header("Identity")]
+    public int speakerID = 1; // /vol{ID}, /mute{ID}, etc.
 
+    [Header("UI - Main Gain")]
     public Toggle muteToggle;
     public TextMeshProUGUI gainLevelText;
     public Slider gainSlider;
     public TextMeshProUGUI speakerNumberText;
 
+    [Header("UI - EQ (6 bands)")]
+    public Slider[] eqSliders = new Slider[6];
+
+    [Header("UI - Reverb (4 params)")]
+    public Slider[] reverbSliders = new Slider[4];
+
+    [Header("OSC")]
     public OSCTransmitter transmitter;
 
     private bool isMuted = false;
 
-    void Start()
+    private void Awake()
     {
-        // If no transmitter is assigned, try to find the OSC Transmitter in the scene
+        // Ensure arrays are correct sizes even if someone edits them in Inspector
+        if (eqSliders == null || eqSliders.Length != 6) eqSliders = new Slider[6];
+        if (reverbSliders == null || reverbSliders.Length != 4) reverbSliders = new Slider[4];
+    }
+
+    private void Start()
+    {
         if (transmitter == null)
         {
             transmitter = FindObjectOfType<OSCTransmitter>();
-
             if (transmitter == null)
                 Debug.LogError("[SpeakerGainControl] OSCTransmitter not found in scene!");
         }
 
-        // Update speaker number label
         if (speakerNumberText != null)
             speakerNumberText.text = $"Speaker {speakerID}";
 
-        // Initialize gain text
-        UpdateGainLevelText(gainSlider.value);
+        if (gainSlider != null)
+            UpdateGainLevelText(gainSlider.value);
 
-        // Add listeners
-        gainSlider.onValueChanged.AddListener(OnSliderValueChanged);
-        muteToggle.onValueChanged.AddListener(OnMuteButtonClicked());
-    }
+        // Listeners
+        if (gainSlider != null)
+            gainSlider.onValueChanged.AddListener(OnSliderValueChanged);
 
-    void OnSliderValueChanged(float value)
-    {
-        if (!isMuted)
+        if (muteToggle != null)
         {
-            UpdateGainLevelText(value);
-            SendGainValue(value);
+            // Sync internal state to toggle’s current value on start
+            isMuted = muteToggle.isOn;
+            muteToggle.onValueChanged.AddListener(OnMuteToggleChanged);
+            ApplyMuteState(isMuted, sendOsc: true);
         }
+
+        // Optional: hook EQ + reverb listeners for OSC updates
+        HookEQListeners();
+        HookReverbListeners();
     }
 
-    UnityAction<bool> OnMuteButtonClicked()
-    {
-        isMuted = !isMuted;
+    // -----------------------------
+    // MAIN GAIN / MUTE
+    // -----------------------------
 
+    private void OnSliderValueChanged(float value)
+    {
         if (isMuted)
         {
-            gainLevelText.text = "MUTED";
-            SendMuteValue(true);
+            // Keep slider movable, but show MUTED (or show value—your choice)
+            if (gainLevelText != null) gainLevelText.text = "MUTED";
+            return;
+        }
+
+        UpdateGainLevelText(value);
+        SendGainValue(value);
+    }
+
+    private void OnMuteToggleChanged(bool muted)
+    {
+        isMuted = muted;
+        ApplyMuteState(isMuted, sendOsc: true);
+    }
+
+    private void ApplyMuteState(bool muted, bool sendOsc)
+    {
+        if (muted)
+        {
+            if (gainLevelText != null) gainLevelText.text = "MUTED";
+            if (sendOsc) SendMuteValue(true);
+
+            // Optional: also force gain to 0 in Max while muted:
+            // if (sendOsc) SendGainValue(0f);
         }
         else
         {
-            UpdateGainLevelText(gainSlider.value);
-            SendMuteValue(false);
+            if (gainSlider != null) UpdateGainLevelText(gainSlider.value);
+            if (sendOsc) SendMuteValue(false);
+
+            // Optional: re-send current gain after unmute:
+            if (sendOsc && gainSlider != null) SendGainValue(gainSlider.value);
         }
-
-        return null;
     }
 
-    void UpdateGainLevelText(float value)
+    private void UpdateGainLevelText(float value)
     {
-        gainLevelText.text = value.ToString("0.00");
+        if (gainLevelText != null)
+            gainLevelText.text = value.ToString("0.00");
     }
 
-    void SendGainValue(float value)
+    private void SendGainValue(float value)
     {
-        if (transmitter != null)
+        if (transmitter == null) return;
+
+        var message = new OSCMessage($"/vol{speakerID}");
+        message.AddValue(OSCValue.Float(value));
+        transmitter.Send(message);
+
+        Debug.Log($"[OSC] Sent /vol{speakerID}: {value}");
+    }
+
+    private void SendMuteValue(bool mute)
+    {
+        if (transmitter == null) return;
+
+        var message = new OSCMessage($"/mute{speakerID}");
+        message.AddValue(OSCValue.Bool(mute));
+        transmitter.Send(message);
+
+        Debug.Log($"[OSC] Sent /mute{speakerID}: {mute}");
+    }
+
+    // -----------------------------
+    // EQ (6 bands) - OPTIONAL OSC
+    // -----------------------------
+
+    private void HookEQListeners()
+    {
+        for (int i = 0; i < eqSliders.Length; i++)
         {
-            var message = new OSCMessage($"/vol{speakerID}");
-            message.AddValue(OSCValue.Float(value));
-            transmitter.Send(message);
+            int band = i;
+            var s = eqSliders[band];
+            if (s == null) continue;
 
-            Debug.Log($"[OSC] Sent /vol{speakerID}: {value}");
+            s.onValueChanged.AddListener((val) => SendEQBand(band, val));
         }
     }
 
-    void SendMuteValue(bool mute)
+    private void SendEQBand(int bandIndex, float value)
     {
-        if (transmitter != null)
-        {
-            var message = new OSCMessage($"/mute{speakerID}");
-            message.AddValue(OSCValue.Bool(mute));
-            transmitter.Send(message);
+        if (transmitter == null) return;
 
-            Debug.Log($"[OSC] Sent /mute{speakerID}: {mute}");
+        // Choose your OSC scheme; here are two common options:
+
+        // Option A: per speaker, per band:
+        // /eq{speakerID}/{bandIndex} value
+        var msg = new OSCMessage($"/eq{speakerID}/{bandIndex}");
+        msg.AddValue(OSCValue.Float(value));
+        transmitter.Send(msg);
+
+        Debug.Log($"[OSC] Sent /eq{speakerID}/{bandIndex}: {value}");
+    }
+
+    // -----------------------------
+    // REVERB (4 params) - OPTIONAL OSC
+    // -----------------------------
+
+    private void HookReverbListeners()
+    {
+        for (int i = 0; i < reverbSliders.Length; i++)
+        {
+            int p = i;
+            var s = reverbSliders[p];
+            if (s == null) continue;
+
+            s.onValueChanged.AddListener((val) => SendReverbParam(p, val));
         }
+    }
+
+    private void SendReverbParam(int paramIndex, float value)
+    {
+        if (transmitter == null) return;
+
+        // Option A: per speaker:
+        // /rev{speakerID}/{paramIndex} value
+        var msg = new OSCMessage($"/rev{speakerID}/{paramIndex}");
+        msg.AddValue(OSCValue.Float(value));
+        transmitter.Send(msg);
+
+        Debug.Log($"[OSC] Sent /rev{speakerID}/{paramIndex}: {value}");
+    }
+
+    // -----------------------------
+    // SAVE / LOAD API
+    // -----------------------------
+
+    public float GetMainGain() => gainSlider != null ? gainSlider.value : 0f;
+
+    public float[] GetEQ6()
+    {
+        var arr = new float[6];
+        for (int i = 0; i < 6; i++)
+            arr[i] = (eqSliders != null && i < eqSliders.Length && eqSliders[i] != null) ? eqSliders[i].value : 0f;
+        return arr;
+    }
+
+    public float[] GetReverb4()
+    {
+        var arr = new float[4];
+        for (int i = 0; i < 4; i++)
+            arr[i] = (reverbSliders != null && i < reverbSliders.Length && reverbSliders[i] != null) ? reverbSliders[i].value : 0f;
+        return arr;
+    }
+
+    public void SetMainGain(float v)
+    {
+        if (gainSlider != null) gainSlider.value = v;
+        if (!isMuted) UpdateGainLevelText(v);
+    }
+
+    public void SetEQ6(float[] v)
+    {
+        for (int i = 0; i < 6; i++)
+            if (eqSliders != null && i < eqSliders.Length && eqSliders[i] != null)
+                eqSliders[i].value = (v != null && v.Length > i) ? v[i] : 0f;
+    }
+
+    public void SetReverb4(float[] v)
+    {
+        for (int i = 0; i < 4; i++)
+            if (reverbSliders != null && i < reverbSliders.Length && reverbSliders[i] != null)
+                reverbSliders[i].value = (v != null && v.Length > i) ? v[i] : 0f;
     }
 }
