@@ -91,6 +91,7 @@
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Managers\UISettingsManager.cs" />
     <Compile Include="Assets\extOSC\Examples\04) Informers\Scripts\InformersExample.cs" />
     <Compile Include="Assets\extOSC\Examples\01) Getting Started\Scripts\SimpleMessageTransmitter.cs" />
+    <Compile Include="Assets\Scripts\ReverbOscController.cs" />
     <Compile Include="Assets\extOSC\Examples\11) Array\Scripts\ArrayExample.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.1.0\URP Package Samples\CameraStacking\3D Skybox\Scripts\SkyboxCamera.cs" />
     <Compile Include="Assets\Scripts\SpeakerManager.cs" />

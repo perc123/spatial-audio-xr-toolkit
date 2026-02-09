@@ -6,7 +6,7 @@ using extOSC;
 public class SpeakerGainControl : MonoBehaviour
 {
     [Header("Identity")]
-    public int speakerID = 1; // /vol{ID}, /mute{ID}, etc.
+    public int speakerID = 1;
 
     [Header("UI - Main Gain")]
     public Toggle muteToggle;
@@ -27,7 +27,6 @@ public class SpeakerGainControl : MonoBehaviour
 
     private void Awake()
     {
-        // Ensure arrays are correct sizes even if someone edits them in Inspector
         if (eqSliders == null || eqSliders.Length != 6) eqSliders = new Slider[6];
         if (reverbSliders == null || reverbSliders.Length != 4) reverbSliders = new Slider[4];
     }
@@ -53,13 +52,12 @@ public class SpeakerGainControl : MonoBehaviour
 
         if (muteToggle != null)
         {
-            // Sync internal state to toggle’s current value on start
             isMuted = muteToggle.isOn;
             muteToggle.onValueChanged.AddListener(OnMuteToggleChanged);
             ApplyMuteState(isMuted, sendOsc: true);
         }
 
-        // Optional: hook EQ + reverb listeners for OSC updates
+        // EQ + reverb listeners for OSC updates
         HookEQListeners();
         HookReverbListeners();
     }
@@ -72,7 +70,6 @@ public class SpeakerGainControl : MonoBehaviour
     {
         if (isMuted)
         {
-            // Keep slider movable, but show MUTED (or show value—your choice)
             if (gainLevelText != null) gainLevelText.text = "MUTED";
             return;
         }
@@ -94,15 +91,13 @@ public class SpeakerGainControl : MonoBehaviour
             if (gainLevelText != null) gainLevelText.text = "MUTED";
             if (sendOsc) SendMuteValue(true);
 
-            // Optional: also force gain to 0 in Max while muted:
-            // if (sendOsc) SendGainValue(0f);
         }
         else
         {
             if (gainSlider != null) UpdateGainLevelText(gainSlider.value);
             if (sendOsc) SendMuteValue(false);
 
-            // Optional: re-send current gain after unmute:
+            // re-send current gain after unmute:
             if (sendOsc && gainSlider != null) SendGainValue(gainSlider.value);
         }
     }
@@ -154,10 +149,7 @@ public class SpeakerGainControl : MonoBehaviour
     private void SendEQBand(int bandIndex, float value)
     {
         if (transmitter == null) return;
-
-        // Choose your OSC scheme; here are two common options:
-
-        // Option A: per speaker, per band:
+        
         // /eq{speakerID}/{bandIndex} value
         var msg = new OSCMessage($"/eq{speakerID}/{bandIndex}");
         msg.AddValue(OSCValue.Float(value));
@@ -167,7 +159,7 @@ public class SpeakerGainControl : MonoBehaviour
     }
 
     // -----------------------------
-    // REVERB (4 params) - OPTIONAL OSC
+    // REVERB (4 params)
     // -----------------------------
 
     private void HookReverbListeners()
@@ -186,7 +178,7 @@ public class SpeakerGainControl : MonoBehaviour
     {
         if (transmitter == null) return;
 
-        // Option A: per speaker:
+      
         // /rev{speakerID}/{paramIndex} value
         var msg = new OSCMessage($"/rev{speakerID}/{paramIndex}");
         msg.AddValue(OSCValue.Float(value));
