@@ -1177,7 +1177,6 @@ GameObject:
   m_Component:
   - component: {fileID: 292426629}
   - component: {fileID: 292426631}
-  - component: {fileID: 292426630}
   m_Layer: 5
   m_Name: Slider (2)
   m_TagString: Untagged
@@ -1207,26 +1206,6 @@ RectTransform:
   m_AnchoredPosition: {x: 115, y: -13}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &292426630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292426628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 1142624369}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!114 &292426631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1271,8 +1250,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1231914672}
   m_HandleRect: {fileID: 2104007381}
   m_Direction: 0
-  m_MinValue: -24
-  m_MaxValue: 24
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -3369,7 +3348,6 @@ GameObject:
   m_Component:
   - component: {fileID: 556894451}
   - component: {fileID: 556894452}
-  - component: {fileID: 556894453}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -3450,26 +3428,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &556894453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556894450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 778833826}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!1 &566458395
 GameObject:
   m_ObjectHideFlags: 0
@@ -3756,7 +3714,6 @@ GameObject:
   m_Component:
   - component: {fileID: 581445934}
   - component: {fileID: 581445936}
-  - component: {fileID: 581445935}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -3786,26 +3743,6 @@ RectTransform:
   m_AnchoredPosition: {x: -107, y: 19.999947}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &581445935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581445933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 778833826}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!114 &581445936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4525,7 +4462,6 @@ GameObject:
   m_Component:
   - component: {fileID: 707391459}
   - component: {fileID: 707391461}
-  - component: {fileID: 707391460}
   m_Layer: 5
   m_Name: Slider (3)
   m_TagString: Untagged
@@ -4555,26 +4491,6 @@ RectTransform:
   m_AnchoredPosition: {x: 113, y: 19.999947}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &707391460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707391458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 778833826}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!114 &707391461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4990,6 +4906,7 @@ RectTransform:
   - {fileID: 1137675537}
   - {fileID: 707391459}
   - {fileID: 1607979912}
+  - {fileID: 1249314438}
   m_Father: {fileID: 1998399034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6690,7 +6607,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1046598534}
   - component: {fileID: 1046598536}
-  - component: {fileID: 1046598535}
   m_Layer: 5
   m_Name: Slider (1)
   m_TagString: Untagged
@@ -6720,26 +6636,6 @@ RectTransform:
   m_AnchoredPosition: {x: 116, y: 20}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1046598535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046598533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 1142624369}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!114 &1046598536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6784,8 +6680,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1348341541}
   m_HandleRect: {fileID: 1332405234}
   m_Direction: 0
-  m_MinValue: -24
-  m_MaxValue: 24
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -7281,7 +7177,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1137675537}
   - component: {fileID: 1137675539}
-  - component: {fileID: 1137675538}
   m_Layer: 5
   m_Name: Slider (2)
   m_TagString: Untagged
@@ -7311,26 +7206,6 @@ RectTransform:
   m_AnchoredPosition: {x: 45, y: 19.999947}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1137675538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137675536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 778833826}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!114 &1137675539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8208,6 +8083,66 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 657184242118504722, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
   m_PrefabInstance: {fileID: 1246460193}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1249314437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1249314438}
+  - component: {fileID: 1249314439}
+  m_Layer: 5
+  m_Name: EQ Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1249314438
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249314437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 778833826}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1249314439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249314437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9933ca9d55c3e4d4e8d8e633beab2198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speakerID: 1
+  bandGainSliders:
+  - {fileID: 556894452}
+  - {fileID: 581445936}
+  - {fileID: 2018666024}
+  - {fileID: 1137675539}
+  - {fileID: 707391461}
+  - {fileID: 1607979914}
+  transmitter: {fileID: 1515427251}
+  oscAddressRoot: /filter
+  sendAllOnStart: 1
+  sendEpsilonDb: 0.01
 --- !u!1 &1275444344
 GameObject:
   m_ObjectHideFlags: 0
@@ -8510,7 +8445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 16 kHz
+  m_text: 1,6 kHz
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 537eb1eef138da7489d2d0c861629654, type: 2}
   m_sharedMaterial: {fileID: -2009162042594335899, guid: 537eb1eef138da7489d2d0c861629654, type: 2}
@@ -9875,7 +9810,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1537561236}
   - component: {fileID: 1537561238}
-  - component: {fileID: 1537561237}
   m_Layer: 5
   m_Name: Slider (3)
   m_TagString: Untagged
@@ -9905,26 +9839,6 @@ RectTransform:
   m_AnchoredPosition: {x: 115, y: -48}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1537561237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537561235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 1142624369}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!114 &1537561238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9969,8 +9883,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1941587187}
   m_HandleRect: {fileID: 813322645}
   m_Direction: 0
-  m_MinValue: -24
-  m_MaxValue: 24
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -10337,7 +10251,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1607979912}
   - component: {fileID: 1607979914}
-  - component: {fileID: 1607979913}
   m_Layer: 5
   m_Name: Slider (4)
   m_TagString: Untagged
@@ -10367,26 +10280,6 @@ RectTransform:
   m_AnchoredPosition: {x: 179, y: 19.999947}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1607979913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607979911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 778833826}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!114 &1607979914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11356,7 +11249,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1843546454}
   - component: {fileID: 1843546456}
-  - component: {fileID: 1843546455}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -11386,26 +11278,6 @@ RectTransform:
   m_AnchoredPosition: {x: 115, y: 54}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1843546455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843546453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 1142624369}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!114 &1843546456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11450,8 +11322,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1580972588}
   m_HandleRect: {fileID: 963587937}
   m_Direction: 0
-  m_MinValue: -24
-  m_MaxValue: 24
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -13190,7 +13062,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2018666022}
   - component: {fileID: 2018666024}
-  - component: {fileID: 2018666023}
   m_Layer: 5
   m_Name: Slider (1)
   m_TagString: Untagged
@@ -13220,26 +13091,6 @@ RectTransform:
   m_AnchoredPosition: {x: -36, y: 19.999947}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2018666023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018666021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f42152e4661b4f8a5e22833faac2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bandIndex: 0
-  graphArea: {fileID: 778833826}
-  transmitter: {fileID: 1515427251}
-  minFreq: 20
-  maxFreq: 20000
-  minGain: -24
-  maxGain: 24
-  oscAddressRoot: /filter
 --- !u!114 &2018666024
 MonoBehaviour:
   m_ObjectHideFlags: 0

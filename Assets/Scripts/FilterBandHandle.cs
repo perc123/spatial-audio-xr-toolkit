@@ -1,51 +1,89 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using extOSC;
 
-public class FilterBandHandle : MonoBehaviour, IDragHandler
-{ 
-    [SerializeField] private int bandIndex;
-    [SerializeField] private RectTransform graphArea;
-    [SerializeField] private OSCTransmitter transmitter;
+[RequireComponent(typeof(RectTransform))]
+public class FilterBandHandle : MonoBehaviour, IBeginDragHandler, IDragHandler
+{
+    [Header("Band")]
+    [SerializeField] private int bandIndex = 0;
 
+    [Header("UI")]
+    [SerializeField] private RectTransform graphArea;
+
+    [Header("OSC")]
+    [SerializeField] private OSCTransmitter transmitter;
+    [SerializeField] private string oscAddressRoot = "/filter";
+
+    [Header("Mapping")]
     [SerializeField] private float minFreq = 20f;
     [SerializeField] private float maxFreq = 20000f;
     [SerializeField] private float minGain = -24f;
     [SerializeField] private float maxGain = 24f;
 
-    [SerializeField] private string oscAddressRoot = "/filter";
+    private RectTransform _self;
+    private bool _allowDrag = true;
+
+    private void Awake()
+    {
+        _self = GetComponent<RectTransform>();
+        if (graphArea == null) graphArea = _self.parent as RectTransform;
+    }
+
+    private void Start()
+    {
+        if (transmitter == null)
+            transmitter = FindObjectOfType<OSCTransmitter>();
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        // If the drag started on a Slider (or inside one), do NOT move this object.
+        // This prevents fighting with Unity's Slider drag logic (especially in XR).
+        _allowDrag = true;
+
+        if (eventData.pointerPress != null)
+        {
+            var slider = eventData.pointerPress.GetComponentInParent<Slider>();
+            if (slider != null)
+                _allowDrag = false;
+        }
+    }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(graphArea, eventData.position, eventData.pressEventCamera, out localPoint);
+        if (!_allowDrag) return;
+        if (graphArea == null || transmitter == null) return;
 
-        // Clamp position inside graph area
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            graphArea, eventData.position, eventData.pressEventCamera, out var localPoint);
+
+        float halfW = graphArea.rect.width * 0.5f;
+        float halfH = graphArea.rect.height * 0.5f;
+
         Vector2 clamped = new Vector2(
-            Mathf.Clamp(localPoint.x, -graphArea.rect.width / 2, graphArea.rect.width / 2),
-            Mathf.Clamp(localPoint.y, -graphArea.rect.height / 2, graphArea.rect.height / 2)
+            Mathf.Clamp(localPoint.x, -halfW, halfW),
+            Mathf.Clamp(localPoint.y, -halfH, halfH)
         );
 
-        GetComponent<RectTransform>().localPosition = clamped;
+        _self.localPosition = clamped;
 
-        float freqNorm = (clamped.x + graphArea.rect.width / 2) / graphArea.rect.width;
-        float gainNorm = (clamped.y + graphArea.rect.height / 2) / graphArea.rect.height;
+        float freqNorm = (clamped.x + halfW) / (halfW * 2f);
+        float gainNorm = (clamped.y + halfH) / (halfH * 2f);
 
-        float frequency = Mathf.Exp(Mathf.Lerp(Mathf.Log(minFreq), Mathf.Log(maxFreq), freqNorm));
-        float gain = Mathf.Lerp(minGain, maxGain, gainNorm);
+        float frequency = Mathf.Exp(Mathf.Lerp(Mathf.Log(minFreq), Mathf.Log(maxFreq), Mathf.Clamp01(freqNorm)));
+        float gain = Mathf.Lerp(minGain, maxGain, Mathf.Clamp01(gainNorm));
 
         SendFilterUpdate(frequency, gain);
     }
 
     private void SendFilterUpdate(float freq, float gain)
     {
-        var msg = new OSCMessage($"{oscAddressRoot}");
-                                 //$"/{bandIndex}");
-        msg.AddValue(OSCValue.Int(bandIndex));
+        string address = $"{oscAddressRoot}/{bandIndex}";
+        var msg = new OSCMessage(address);
         msg.AddValue(OSCValue.Float(freq));
         msg.AddValue(OSCValue.Float(gain));
         transmitter.Send(msg);
-
-        Debug.Log($"[OSC] Sent /filter/{bandIndex} freq: {freq} Hz, gain: {gain} dB");
     }
 }
