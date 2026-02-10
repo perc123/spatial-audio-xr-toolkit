@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "extOSC", "extOSC.csproj", "{5c4b7b90-ad8b-7eea-3c57-9dc349f6b021}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{410969e8-e199-2151-8db6-ccd08d9376ef}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "extOSC.Editor", "extOSC.Editor.csproj", "{bfc2e9e0-c14d-6661-9cfb-50816ff950f5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.StarterAssets", "Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj", "{a2e8340f-c9b3-4e02-98ff-d019ed07611e}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.Hands", "Unity.XR.Interaction.Toolkit.Samples.Hands.csproj", "{ba821400-39a2-c0bf-0063-9de8973d579b}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor", "Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj", "{10b7f326-9b3a-fa43-fc47-56dce627129e}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator", "Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj", "{828c48a0-c231-ef23-739f-844255abb3da}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Hands.Samples.VisualizerSample", "Unity.XR.Hands.Samples.VisualizerSample.csproj", "{7c8e0f6e-3015-ec54-4ae9-910a3efdc28d}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{9058da7d-5d22-7102-03d3-bc3ae20ce02d}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.Hands.Editor", "Unity.XR.Interaction.Toolkit.Samples.Hands.Editor.csproj", "{f8925eb2-ab45-d0df-3f3e-260a75c29a1d}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5c4b7b90-ad8b-7eea-3c57-9dc349f6b021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5c4b7b90-ad8b-7eea-3c57-9dc349f6b021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{410969e8-e199-2151-8db6-ccd08d9376ef}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{410969e8-e199-2151-8db6-ccd08d9376ef}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{bfc2e9e0-c14d-6661-9cfb-50816ff950f5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{bfc2e9e0-c14d-6661-9cfb-50816ff950f5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{a2e8340f-c9b3-4e02-98ff-d019ed07611e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{a2e8340f-c9b3-4e02-98ff-d019ed07611e}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ba821400-39a2-c0bf-0063-9de8973d579b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ba821400-39a2-c0bf-0063-9de8973d579b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10b7f326-9b3a-fa43-fc47-56dce627129e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10b7f326-9b3a-fa43-fc47-56dce627129e}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828c48a0-c231-ef23-739f-844255abb3da}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828c48a0-c231-ef23-739f-844255abb3da}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7c8e0f6e-3015-ec54-4ae9-910a3efdc28d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7c8e0f6e-3015-ec54-4ae9-910a3efdc28d}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9058da7d-5d22-7102-03d3-bc3ae20ce02d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9058da7d-5d22-7102-03d3-bc3ae20ce02d}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{f8925eb2-ab45-d0df-3f3e-260a75c29a1d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f8925eb2-ab45-d0df-3f3e-260a75c29a1d}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
