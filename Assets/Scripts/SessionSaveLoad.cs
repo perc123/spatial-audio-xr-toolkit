@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 [Serializable]
-public class SessionSnapshot
+public class SessionSnapshot : MonoBehaviour
 {
     public int version = 1;
     public List<SpeakerSnapshot> speakers = new();

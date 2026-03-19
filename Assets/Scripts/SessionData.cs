@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class SessionData
+public class SessionData : MonoBehaviour
 {
     public int version = 1;
     public List<SpeakerData> speakers = new();

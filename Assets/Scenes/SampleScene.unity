@@ -1291,6 +1291,7 @@ RectTransform:
   - {fileID: 571475955}
   - {fileID: 1904014076}
   - {fileID: 2118111357}
+  - {fileID: 551451564}
   m_Father: {fileID: 269939424}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3254,6 +3255,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 657184243640684915, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
   m_PrefabInstance: {fileID: 1246460193}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &551451563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 551451564}
+  - component: {fileID: 551451566}
+  - component: {fileID: 551451565}
+  m_Layer: 5
+  m_Name: SerializationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &551451564
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551451563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 298227155}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &551451565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551451563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0895c394e1a9574096917d11481f0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  speakers: []
+--- !u!114 &551451566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551451563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4078c902f67f9e3469aa6507b0087c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  speakers: []
 --- !u!1 &553483731
 GameObject:
   m_ObjectHideFlags: 0
@@ -8702,7 +8768,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 978419204}
         m_TargetAssemblyTypeName: SpeakerManager, Assembly-CSharp
         m_MethodName: RemoveSpeaker
         m_Mode: 1
@@ -12435,7 +12501,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 978419204}
         m_TargetAssemblyTypeName: SpeakerManager, Assembly-CSharp
         m_MethodName: AddSpeaker
         m_Mode: 1
@@ -12634,7 +12700,7 @@ GameObject:
   - component: {fileID: 1956319908}
   - component: {fileID: 1956319907}
   m_Layer: 0
-  m_Name: Inputactions
+  m_Name: InputActions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

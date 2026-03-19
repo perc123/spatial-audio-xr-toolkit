@@ -2,7 +2,7 @@ Using pre-set license
 Built from '6000.1/staging' branch; Version is '6000.1.3f1 (f34db9734971) revision 15945145'; Using compiler version '194234433'; Build Type 'Release'
 OS: 'Windows 11  (10.0.26200) 64bit Professional' Language: 'en' Physical Memory: 15773 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
-Date: 2026-03-07T08:37:45Z
+Date: 2026-03-08T20:56:04Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\Unity.exe
@@ -16,7 +16,7 @@ C:/Users/fanis/unity-maxmsp
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-11763
+18308
 -job-worker-count
 2
 -background-job-worker-count
@@ -62,14 +62,12 @@ C:/Users/fanis/unity-maxmsp
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [21936]  Target information:
+Player connection [2304]  Target information:
 
-Player connection [21936]  * "[IP] 10.5.0.2 [Port] 0 [Flags] 2 [Guid] 3535445575 [EditorId] 3535445575 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-6SVTGTR) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [2304]  * "[IP] 10.5.0.2 [Port] 0 [Flags] 2 [Guid] 2172851546 [EditorId] 2172851546 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-6SVTGTR) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [21936]  * "[IP] 192.168.1.169 [Port] 0 [Flags] 2 [Guid] 3535445575 [EditorId] 3535445575 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-6SVTGTR) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
-
-Player connection [21936] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [21936] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [2304] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [2304] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 2
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -81,7 +79,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 32.72 ms, found 12 plugins.
+Refreshing native plugins compatible for Editor in 35.50 ms, found 12 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.1.3f1 (f34db9734971)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.1.3f1/Editor/Data/Resources/UnitySubsystems
@@ -97,63 +95,63 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.1.3f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.1.3f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56056
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56804
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.1.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-Registered in 0.003622 seconds.
-- Loaded All Assemblies, in  1.588 seconds
+Registered in 0.003963 seconds.
+- Loaded All Assemblies, in  0.698 seconds
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 920 ms
+Android Extension - Scanning For ADB Devices 544 ms
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.654 seconds
-Domain Reload Profiling: 4205ms
-	BeginReloadAssembly (231ms)
+- Finished resetting the current domain, in  1.272 seconds
+Domain Reload Profiling: 1964ms
+	BeginReloadAssembly (220ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (68ms)
-	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (241ms)
-	LoadAllAssembliesAndSetupDomain (993ms)
-		LoadAssemblies (244ms)
+		CreateAndSetChildDomain (2ms)
+	RebuildCommonClasses (72ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (91ms)
+	LoadAllAssembliesAndSetupDomain (287ms)
+		LoadAssemblies (215ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (956ms)
-			TypeCache.Refresh (944ms)
-				TypeCache.ScanAssembly (897ms)
-			BuildScriptInfoCaches (2ms)
+		AnalyzeDomain (280ms)
+			TypeCache.Refresh (278ms)
+				TypeCache.ScanAssembly (256ms)
+			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (2656ms)
+	FinalizeReload (1272ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2390ms)
+		SetupLoadedEditorAssemblies (1211ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (1215ms)
-			SetLoadedEditorAssemblies (15ms)
-			BeforeProcessingInitializeOnLoad (199ms)
-			ProcessInitializeOnLoadAttributes (575ms)
-			ProcessInitializeOnLoadMethodAttributes (386ms)
+			InitializePlatformSupportModulesInManaged (746ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (137ms)
+			ProcessInitializeOnLoadAttributes (217ms)
+			ProcessInitializeOnLoadMethodAttributes (105ms)
 			AfterProcessingInitializeOnLoad (0ms)
-			EditorAssembliesLoaded (1ms)
+			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (0ms)
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  4.543 seconds
-Refreshing native plugins compatible for Editor in 233.88 ms, found 12 plugins.
+- Loaded All Assemblies, in  1.703 seconds
+Refreshing native plugins compatible for Editor in 18.18 ms, found 12 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
 Could not open file VirtualArtifacts/Primary/0927d29e476ce5843b1f7d2a96943c51 for read
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -369,7 +367,7 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 Crash!!!
 SymInit: Symbol-SearchPath: 'C:/Program Files/Unity/Hub/Editor/6000.1.3f1/Editor/Data/Mono;.;C:\Users\fanis\unity-maxmsp;C:\Users\fanis\unity-maxmsp\Library\BurstCache\JIT;C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor;C:\WINDOWS;C:\WINDOWS\system32;', symOptions: 534, UserName: 'fanis'
 OS-Version: 10.0.0
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\Unity.exe:Unity.exe (00007FF73ACF0000), size: 290816 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6000.1.3.19897
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\Unity.exe:Unity.exe (00007FF609EA0000), size: 290816 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6000.1.3.19897
 C:\WINDOWS\SYSTEM32\ntdll.dll:ntdll.dll (00007FFA8C500000), size: 2523136 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7824
 C:\WINDOWS\System32\KERNEL32.DLL:KERNEL32.DLL (00007FFA8B6F0000), size: 823296 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\System32\KERNELBASE.dll:KERNELBASE.dll (00007FFA89700000), size: 4132864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7824
@@ -380,62 +378,62 @@ C:\WINDOWS\System32\gdi32full.dll:gdi32full.dll (00007FFA8A020000), size: 122470
 C:\WINDOWS\System32\msvcp_win.dll:msvcp_win.dll (00007FFA89DD0000), size: 667648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7623
 C:\WINDOWS\System32\ucrtbase.dll:ucrtbase.dll (00007FFA8A150000), size: 1355776 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7623
 C:\WINDOWS\System32\IMM32.DLL:IMM32.DLL (00007FFA8AA10000), size: 200704 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7309
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\Unity.dll:Unity.dll (00007FF9B9480000), size: 86863872 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6000.1.3.19897
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\Unity.dll:Unity.dll (00007FF9D3B20000), size: 86863872 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6000.1.3.19897
 C:\WINDOWS\System32\CRYPT32.dll:CRYPT32.dll (00007FFA89B90000), size: 1536000 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7309
 C:\WINDOWS\System32\ADVAPI32.dll:ADVAPI32.dll (00007FFA8B990000), size: 737280 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\System32\msvcrt.dll:msvcrt.dll (00007FFA8B460000), size: 692224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 7.0.26100.7623
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\libfbxsdk.dll:libfbxsdk.dll (00007FFA581C0000), size: 8019968 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.7.0
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\libfbxsdk.dll:libfbxsdk.dll (00007FFA07ED0000), size: 8019968 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.7.0
 C:\WINDOWS\System32\sechost.dll:sechost.dll (00007FFA8A320000), size: 679936 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7623
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\s3tcompress.dll:s3tcompress.dll (00007FFA83FD0000), size: 180224 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\s3tcompress.dll:s3tcompress.dll (00007FFA115F0000), size: 180224 (result: 0), SymType: '-deferred-', PDB: ''
 C:\WINDOWS\System32\RPCRT4.dll:RPCRT4.dll (00007FFA8BA60000), size: 1146880 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\ispc_texcomp.dll:ispc_texcomp.dll (00007FFA6E100000), size: 1826816 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\etccompress.dll:etccompress.dll (00007FFA3D860000), size: 5070848 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\compress_bc7e.dll:compress_bc7e.dll (00007FFA6DFA0000), size: 1433600 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\WinPixEventRuntime.dll:WinPixEventRuntime.dll (00007FFA83FC0000), size: 53248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.2201.24001
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\FreeImage.dll:FreeImage.dll (0000000180000000), size: 5783552 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 3.18.0.0
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\umbraoptimizer64.dll:umbraoptimizer64.dll (00007FFA6A950000), size: 1187840 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\ispc_texcomp.dll:ispc_texcomp.dll (00007FFA10890000), size: 1826816 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\etccompress.dll:etccompress.dll (00007FFA05F30000), size: 5070848 (result: 0), SymType: '-deferred-', PDB: ''
 C:\WINDOWS\System32\ole32.dll:ole32.dll (00007FFA8C320000), size: 1667072 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7824
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\FreeImage.dll:FreeImage.dll (0000000180000000), size: 5783552 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 3.18.0.0
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\compress_bc7e.dll:compress_bc7e.dll (00007FFA07D70000), size: 1433600 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\WinPixEventRuntime.dll:WinPixEventRuntime.dll (00007FFA12C50000), size: 53248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.2201.24001
 C:\WINDOWS\System32\WS2_32.dll:WS2_32.dll (00007FFA8B810000), size: 475136 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7623
-C:\WINDOWS\SYSTEM32\MSVCP140.dll:MSVCP140.dll (00007FFA662A0000), size: 561152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.44.35211.0
 C:\WINDOWS\System32\combase.dll:combase.dll (00007FFA8A490000), size: 3694592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll:VCRUNTIME140.dll (00007FFA663D0000), size: 122880 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.44.35211.0
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\umbraoptimizer64.dll:umbraoptimizer64.dll (00007FFA07C40000), size: 1187840 (result: 0), SymType: '-deferred-', PDB: ''
 C:\WINDOWS\System32\SETUPAPI.dll:SETUPAPI.dll (00007FFA8BE90000), size: 4755456 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\WINDOWS\SYSTEM32\VCRUNTIME140_1.dll:VCRUNTIME140_1.dll (00007FFA664B0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.44.35211.0
 C:\WINDOWS\System32\SHELL32.dll:SHELL32.dll (00007FFA8AA50000), size: 7675904 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7840
+C:\WINDOWS\SYSTEM32\MSVCP140.dll:MSVCP140.dll (00007FFA662A0000), size: 561152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.44.35211.0
+C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll:VCRUNTIME140.dll (00007FFA663D0000), size: 122880 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.44.35211.0
+C:\WINDOWS\System32\wintypes.dll:wintypes.dll (00007FFA89EB0000), size: 1482752 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
+C:\WINDOWS\SYSTEM32\VCRUNTIME140_1.dll:VCRUNTIME140_1.dll (00007FFA664B0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.44.35211.0
+C:\WINDOWS\System32\SHLWAPI.dll:SHLWAPI.dll (00007FFA8B680000), size: 421888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7824
+C:\WINDOWS\System32\Windows.Storage.dll:Windows.Storage.dll (00007FFA88DE0000), size: 8794112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7840
 C:\WINDOWS\SYSTEM32\bcrypt.dll:bcrypt.dll (00007FFA88CD0000), size: 172032 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7623
 C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.7824_none_3e0870b2e3345462\COMCTL32.dll:COMCTL32.dll (00007FFA70F80000), size: 2699264 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6.10.26100.7824
-C:\WINDOWS\System32\wintypes.dll:wintypes.dll (00007FFA89EB0000), size: 1482752 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\SYSTEM32\d3d11.dll:d3d11.dll (00007FFA86CC0000), size: 2498560 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\WINDOWS\System32\SHLWAPI.dll:SHLWAPI.dll (00007FFA8B680000), size: 421888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7824
-C:\WINDOWS\SYSTEM32\d3d12.dll:d3d12.dll (00007FF9F98C0000), size: 143360 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
+C:\WINDOWS\System32\OLEAUT32.dll:OLEAUT32.dll (00007FFA8B350000), size: 880640 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
+C:\WINDOWS\SYSTEM32\d3d12.dll:d3d12.dll (00007FFA14960000), size: 143360 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\SYSTEM32\dwmapi.dll:dwmapi.dll (00007FFA85AE0000), size: 200704 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\WINDOWS\System32\Windows.Storage.dll:Windows.Storage.dll (00007FFA88DE0000), size: 8794112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7840
+C:\WINDOWS\System32\WINTRUST.dll:WINTRUST.dll (00007FFA89B00000), size: 532480 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
+C:\WINDOWS\SYSTEM32\dxgi.dll:dxgi.dll (00007FFA86F30000), size: 1294336 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\SYSTEM32\HID.DLL:HID.DLL (00007FFA87230000), size: 61440 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.1150
 C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL:IPHLPAPI.DLL (00007FFA87540000), size: 212992 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\WINDOWS\SYSTEM32\dxgi.dll:dxgi.dll (00007FFA86F30000), size: 1294336 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\WINDOWS\System32\OLEAUT32.dll:OLEAUT32.dll (00007FFA8B350000), size: 880640 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\WINDOWS\SYSTEM32\OPENGL32.dll:OPENGL32.dll (00007FFA44F80000), size: 1114112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\WINDOWS\System32\WINTRUST.dll:WINTRUST.dll (00007FFA89B00000), size: 532480 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\WINDOWS\SYSTEM32\powrprof.dll:powrprof.dll (00007FFA88C40000), size: 385024 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.3912
+C:\WINDOWS\SYSTEM32\OPENGL32.dll:OPENGL32.dll (00007FFA6FA70000), size: 1114112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\SYSTEM32\WINHTTP.dll:WINHTTP.dll (00007FFA7EFA0000), size: 1208320 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\SYSTEM32\WINMM.dll:WINMM.dll (00007FFA82640000), size: 217088 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7309
-C:\WINDOWS\SYSTEM32\GLU32.dll:GLU32.dll (00007FFA48210000), size: 184320 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.1150
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\SketchUpAPI.dll:SketchUpAPI.dll (00007FFA04770000), size: 8990720 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 23.0.0.0
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\NativeProxyHelper.dll:NativeProxyHelper.dll (00007FFA6A790000), size: 1789952 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\SYSTEM32\GLU32.dll:GLU32.dll (00007FFA763F0000), size: 184320 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.1150
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\NativeProxyHelper.dll:NativeProxyHelper.dll (00007FFA07780000), size: 1789952 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\SketchUpAPI.dll:SketchUpAPI.dll (00007FFA00AD0000), size: 8990720 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 23.0.0.0
 C:\WINDOWS\SYSTEM32\VERSION.dll:VERSION.dll (00007FFA82680000), size: 45056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.1150
-C:\WINDOWS\SYSTEM32\WSOCK32.dll:WSOCK32.dll (00007FFA841A0000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.1
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\SketchUpCommonPreferences.dll:SketchUpCommonPreferences.dll (00007FFA6FB10000), size: 499712 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 23.0.0.0
+C:\WINDOWS\SYSTEM32\WSOCK32.dll:WSOCK32.dll (00007FFA44320000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.1
+C:\WINDOWS\SYSTEM32\powrprof.dll:powrprof.dll (00007FFA88C40000), size: 385024 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.3912
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\SketchUpCommonPreferences.dll:SketchUpCommonPreferences.dll (00007FFA11570000), size: 499712 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 23.0.0.0
 C:\WINDOWS\SYSTEM32\Secur32.dll:Secur32.dll (00007FFA854A0000), size: 53248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\SYSTEM32\dxcore.dll:dxcore.dll (00007FFA85F70000), size: 278528 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\SYSTEM32\SSPICLI.DLL:SSPICLI.DLL (00007FFA87DE0000), size: 299008 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7309
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\OpenRL.dll:OpenRL.dll (0000029D302F0000), size: 12779520 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.5.0.2907
-C:\WINDOWS\SYSTEM32\MSVCP100.dll:MSVCP100.dll (000000006B050000), size: 622592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.325
-C:\WINDOWS\SYSTEM32\MSVCR100.dll:MSVCR100.dll (000000006B0F0000), size: 860160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.325
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\embree.dll:embree.dll (00007FFA03780000), size: 16711680 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.14.0.0
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\OpenRL.dll:OpenRL.dll (000001E226410000), size: 12779520 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.5.0.2907
+C:\WINDOWS\SYSTEM32\MSVCR100.dll:MSVCR100.dll (000000006B220000), size: 860160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.325
+C:\WINDOWS\SYSTEM32\MSVCP100.dll:MSVCP100.dll (000000006B180000), size: 622592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.325
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\embree.dll:embree.dll (00007FF9FFAE0000), size: 16711680 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.14.0.0
 C:\WINDOWS\SYSTEM32\cfgmgr32.DLL:cfgmgr32.DLL (00007FFA88950000), size: 356352 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7309
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\tbb.dll:tbb.dll (00007FFA6FAC0000), size: 303104 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.2022.1111
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\tbb.dll:tbb.dll (00007FFA10F90000), size: 303104 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.2022.1111
 C:\WINDOWS\SYSTEM32\MSWSOCK.DLL:MSWSOCK.DLL (00007FFA88090000), size: 438272 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\OpenRL_pthread.dll:OpenRL_pthread.dll (0000029D2EC20000), size: 61440 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.9.0.0
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\OpenRL_pthread.dll:OpenRL_pthread.dll (000001E224DB0000), size: 61440 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.9.0.0
 C:\WINDOWS\SYSTEM32\UMPDC.dll:UMPDC.dll (00007FFA88C20000), size: 81920 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7019
 C:\WINDOWS\SYSTEM32\MSASN1.dll:MSASN1.dll (00007FFA884E0000), size: 77824 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7623
 C:\WINDOWS\System32\bcryptprimitives.dll:bcryptprimitives.dll (00007FFA89650000), size: 675840 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7623
@@ -443,7 +441,7 @@ C:\WINDOWS\SYSTEM32\kernel.appcore.dll:kernel.appcore.dll (00007FFA87B40000), si
 C:\WINDOWS\system32\uxtheme.dll:uxtheme.dll (00007FFA859E0000), size: 700416 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7824
 C:\WINDOWS\System32\SHCORE.dll:SHCORE.dll (00007FFA8B890000), size: 1007616 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7824
 C:\WINDOWS\SYSTEM32\profapi.dll:profapi.dll (00007FFA88D00000), size: 167936 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7309
-C:\WINDOWS\system32\IconCodecService.dll:IconCodecService.dll (00007FFA66FC0000), size: 45056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.1
+C:\WINDOWS\system32\IconCodecService.dll:IconCodecService.dll (00007FFA841A0000), size: 45056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.1
 C:\WINDOWS\SYSTEM32\WindowsCodecs.dll:WindowsCodecs.dll (00007FFA84A40000), size: 2289664 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\System32\clbcatq.dll:clbcatq.dll (00007FFA8A3D0000), size: 720896 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2001.12.10941.16384
 C:\WINDOWS\System32\netprofm.dll:netprofm.dll (00007FFA834B0000), size: 458752 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
@@ -458,9 +456,9 @@ C:\WINDOWS\system32\nlansp_c.dll:nlansp_c.dll (00007FFA72350000), size: 139264 (
 C:\WINDOWS\system32\wshbth.dll:wshbth.dll (00007FFA72330000), size: 90112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.5074
 C:\WINDOWS\System32\fwpuclnt.dll:fwpuclnt.dll (00007FFA7DAF0000), size: 548864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\Windows\System32\rasadhlp.dll:rasadhlp.dll (00007FFA6E8B0000), size: 45056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\AMDUnityPlugin.DLL:AMDUnityPlugin.DLL (00007FF9FFE70000), size: 8814592 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\NVUnityPlugin.DLL:NVUnityPlugin.DLL (00007FF9FFCE0000), size: 1609728 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\Data\Tools\astcenc-avx2.dll:astcenc-avx2.dll (00007FFA02C00000), size: 352256 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\AMDUnityPlugin.DLL:AMDUnityPlugin.DLL (00007FFA08890000), size: 8814592 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\NVUnityPlugin.DLL:NVUnityPlugin.DLL (00007FFA08700000), size: 1609728 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\Data\Tools\astcenc-avx2.dll:astcenc-avx2.dll (00007FFA086A0000), size: 352256 (result: 0), SymType: '-deferred-', PDB: ''
 C:\WINDOWS\System32\MMDevApi.dll:MMDevApi.dll (00007FFA7CAC0000), size: 622592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7705
 C:\WINDOWS\System32\DEVOBJ.dll:DEVOBJ.dll (00007FFA88920000), size: 184320 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.1150
 C:\WINDOWS\SYSTEM32\directxdatabasehelper.dll:directxdatabasehelper.dll (00007FFA83E70000), size: 405504 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7824
@@ -469,9 +467,9 @@ C:\Windows\System32\DriverStore\FileRepository\u0404740.inf_amd64_4762c8d6a88d95
 C:\Windows\System32\DriverStore\FileRepository\u0404740.inf_amd64_4762c8d6a88d9589\B404377\atidxx64.dll:atidxx64.dll (00007FFA7FEA0000), size: 32972800 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 31.0.21912.2004
 C:\WINDOWS\SYSTEM32\apphelp.dll:apphelp.dll (00007FFA854B0000), size: 647168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7824
 C:\WINDOWS\SYSTEM32\amdihk64.dll:amdihk64.dll (00007FFA7E0A0000), size: 217088 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.0.0.1788
-C:\WINDOWS\SYSTEM32\opencl.dll:opencl.dll (00007FFA7EB70000), size: 98304 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 3.0.6.0
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\radeonrays.dll:radeonrays.dll (00007FF9FF990000), size: 344064 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\Data\MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll:mono-2.0-bdwgc.dll (00007FF9C5180000), size: 10756096 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\SYSTEM32\opencl.dll:opencl.dll (00007FFA14940000), size: 98304 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 3.0.6.0
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\radeonrays.dll:radeonrays.dll (00007FFA2E780000), size: 344064 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.1.3f1\Editor\Data\MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll:mono-2.0-bdwgc.dll (00007FF9E5B00000), size: 10756096 (result: 0), SymType: '-deferred-', PDB: ''
 C:\WINDOWS\SYSTEM32\PROPSYS.dll:PROPSYS.dll (00007FFA84090000), size: 1060864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 7.0.26100.7705
 C:\WINDOWS\system32\NetworkExplorer.dll:NetworkExplorer.dll (00007FFA57810000), size: 110592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7309
 C:\WINDOWS\SYSTEM32\edputil.dll:edputil.dll (00007FFA61B10000), size: 167936 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.26100.7309
@@ -487,100 +485,100 @@ C:\WINDOWS\SYSTEM32\dbghelp.dll:dbghelp.dll (00007FFA86A60000), size: 2367488 (r
 ========== OUTPUTTING STACK TRACE ==================
 
 0x00007FFA897CA80A (KERNELBASE) RaiseException
-0x00007FF9BB044609 (Unity) EditorMonoConsole::LogToConsoleImplementation
-0x00007FF9BB0452F0 (Unity) EditorMonoConsole::LogToConsoleImplementation
-0x00007FF9BBCC248D (Unity) DebugStringToFilePostprocessedStacktrace
-0x00007FF9BBCC1809 (Unity) DebugStringToFile
-0x00007FF9BA10CC1F (Unity) CachedReader::OutOfBoundsError
-0x00007FF9BA10CE90 (Unity) CachedReader::Read
-0x00007FF9B9C1E052 (Unity) StreamedBinaryRead::Transfer<core::basic_string<char,core::StringStorageDefault<char> > >
-0x00007FF9BA3AD506 (Unity) MonoBehaviour::Transfer<StreamedBinaryRead>
-0x00007FF9BA3CD12A (Unity) MonoBehaviour::VirtualRedirectTransfer
-0x00007FF9BA4A9BC0 (Unity) SerializedFile::ReadObject
-0x00007FF9BA4A9306 (Unity) SerializedFile::ReadObject
-0x00007FF9BA48FEF3 (Unity) PersistentManager::ReadAndActivateObjectThreaded
-0x00007FF9BA4905DB (Unity) PersistentManager::ReadObjectThreaded
-0x00007FF9BA490367 (Unity) PersistentManager::ReadObject
-0x00007FF9BB167380 (Unity) FindAllAssetsAtPath
-0x00007FF9B9B0F692 (Unity) AssetDatabase_CUSTOM_LoadAllAssetsAtPath
-0x0000029F42B63F9A (Mono JIT Code) (wrapper managed-to-native) UnityEditor.AssetDatabase:LoadAllAssetsAtPath_Injected (UnityEngine.Bindings.ManagedSpanWrapper&)
-0x0000029F42B63E73 (Mono JIT Code) UnityEditor.AssetDatabase:LoadAllAssetsAtPath (string)
-0x0000029F42B63B33 (Mono JIT Code) [.\Library\PackageCache\com.unity.shadergraph@26dc5ae27e7d\Editor\Data\Util\GraphUtil.cs:210] UnityEditor.ShaderGraph.GraphUtil:TryGetMetadataOfType<T_REF> (UnityEngine.Shader,T_REF&) 
-0x0000029F42B60D4B (Mono JIT Code) [.\Library\PackageCache\com.unity.render-pipelines.universal@35104b1b69f5\Editor\ShaderUtils.cs:57] Unity.Rendering.Universal.ShaderUtils:GetShaderID (UnityEngine.Shader) 
-0x0000029F42B60ADB (Mono JIT Code) [.\Library\PackageCache\com.unity.render-pipelines.universal@35104b1b69f5\Editor\ShaderGUI\BaseShaderGUI.cs:811] UnityEditor.BaseShaderGUI:UpdateMotionVectorKeywordsAndPass (UnityEngine.Material) 
-0x0000029F42B6394B (Mono JIT Code) [.\Library\PackageCache\com.unity.render-pipelines.universal@35104b1b69f5\Editor\ShaderGUI\ShaderGraphLitGUI.cs:41] UnityEditor.ShaderGraphLitGUI:UpdateMaterial (UnityEngine.Material,Unity.Rendering.Universal.ShaderUtils/MaterialUpdateType) 
-0x0000029F42B63843 (Mono JIT Code) [.\Library\PackageCache\com.unity.render-pipelines.universal@35104b1b69f5\Editor\ShaderGUI\ShaderGraphLitGUI.cs:51] UnityEditor.ShaderGraphLitGUI:ValidateMaterial (UnityEngine.Material) 
-0x0000029F42B5878C (Mono JIT Code) UnityEditor.ShaderGUIUtility:ValidateMaterial (UnityEngine.Material)
-0x0000029F3407F998 (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_void_object (object,intptr,intptr,intptr)
-0x00007FF9C54068DE (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\mini\mini-runtime.c:3445] mono_jit_runtime_invoke 
-0x00007FF9C5348404 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3068] do_runtime_invoke 
-0x00007FF9C53484F0 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3115] mono_runtime_invoke 
-0x00007FF9BA3FB054 (Unity) scripting_method_invoke
-0x00007FF9BA3D2F63 (Unity) ScriptingInvocation::Invoke
-0x00007FF9BA3CE665 (Unity) ScriptingInvocation::Invoke<void>
-0x00007FF9BA544A03 (Unity) Scripting::UnityEditor::ShaderGUIUtilityProxy::ValidateMaterial
-0x00007FF9BA178332 (Unity) Material::SetupKeywordsAndPasses
-0x00007FF9BA17B3B2 (Unity) Material::UpdateToNewShader
-0x00007FF9BA176F71 (Unity) Material::SetShader
-0x00007FF9B95C1147 (Unity) Material_Set_Custom_PropShader
-0x0000029F42B5458D (Mono JIT Code) (wrapper managed-to-native) UnityEngine.Material:set_shader_Injected (intptr,intptr)
-0x0000029F42B544CB (Mono JIT Code) UnityEngine.Material:set_shader (UnityEngine.Shader)
-0x0000029F42B542BB (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Interaction Toolkit\3.1.3\Starter Assets\Scripts\MaterialPipelineHandler.cs:115] UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.MaterialPipelineHandler:SetPipelineShaders () 
-0x0000029F42B5408B (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Interaction Toolkit\3.1.3\Starter Assets\Scripts\MaterialPipelineHandler.cs:82] UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.MaterialPipelineHandler:AutoRefreshPipelineShaders () 
-0x0000029F42B54033 (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Interaction Toolkit\3.1.3\Starter Assets\Scripts\MaterialPipelineHandler.cs:75] UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.MaterialPipelineHandler:OnEnable () 
-0x0000029F42B53C18 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
-0x00007FF9C54068DE (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\mini\mini-runtime.c:3445] mono_jit_runtime_invoke 
-0x00007FF9C5348404 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3068] do_runtime_invoke 
-0x00007FF9C53484F0 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3115] mono_runtime_invoke 
-0x00007FF9BA3FB054 (Unity) scripting_method_invoke
-0x00007FF9BA3D2F63 (Unity) ScriptingInvocation::Invoke
-0x00007FF9BA3D304E (Unity) ScriptingInvocation::InvokeChecked
-0x00007FF9BA476878 (Unity) SerializableManagedRef::CallMethod
-0x00007FF9BA3BD4CC (Unity) MonoBehaviour::AwakeFromLoad
-0x00007FF9BA4B7E39 (Unity) AwakeFromLoadQueue::InvokePersistentManagerAwake
-0x00007FF9BA4B8D9A (Unity) AwakeFromLoadQueue::PersistentManagerSingleQueueAwakeFromLoad
-0x00007FF9BA4B89BD (Unity) AwakeFromLoadQueue::PersistentManagerAwakeFromLoad
-0x00007FF9BA48B8C3 (Unity) PersistentManager::IntegrateAllThreadedObjects
-0x00007FF9BA48C050 (Unity) PersistentManager::LoadAndIntegrateAllPreallocatedObjects
-0x00007FF9BA4903E7 (Unity) PersistentManager::ReadObject
-0x00007FF9BAF6A7AA (Unity) LoadAssetAtPath
-0x00007FF9B9AFAADC (Unity) AssetDatabase_CUSTOM_LoadAssetAtPath
-0x0000029F42B3DCAD (Mono JIT Code) (wrapper managed-to-native) UnityEditor.AssetDatabase:LoadAssetAtPath_Injected (UnityEngine.Bindings.ManagedSpanWrapper&,System.Type)
-0x0000029F42B3D84B (Mono JIT Code) UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
-0x0000029F42B3D5AB (Mono JIT Code) UnityEditor.AssetDatabase:LoadAssetAtPath<T_REF> (string)
-0x0000029F42B4B463 (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Hands\1.6.0\HandVisualizer\Scripts\MaterialPipelineHandler.cs:28] UnityEngine.XR.Hands.Samples.VisualizerSample.RenderPipelineValidation:GetAllInstances () 
-0x0000029F42B4AFF3 (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Hands\1.6.0\HandVisualizer\Scripts\MaterialPipelineHandler.cs:15] UnityEngine.XR.Hands.Samples.VisualizerSample.RenderPipelineValidation:.cctor () 
-0x0000029F42B4B195 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void (object,intptr,intptr,intptr)
-0x00007FF9C54068DE (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\mini\mini-runtime.c:3445] mono_jit_runtime_invoke 
-0x00007FF9C5348404 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3068] do_runtime_invoke 
-0x00007FF9C53432E5 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:563] mono_runtime_class_init_full 
-0x00007FF9C5279F47 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1292] ves_icall_System_Runtime_CompilerServices_RuntimeHelpers_RunClassConstructor 
-0x00007FF9C52ACADC (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\icall-def.h:756] ves_icall_System_Runtime_CompilerServices_RuntimeHelpers_RunClassConstructor_raw 
-0x0000029F41A1987A (Mono JIT Code) (wrapper managed-to-native) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (intptr)
-0x0000029F41A1978B (Mono JIT Code) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-0x0000029F41A10A5B (Mono JIT Code) UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-0x0000029F3407F998 (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_void_object (object,intptr,intptr,intptr)
-0x00007FF9C54068DE (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\mini\mini-runtime.c:3445] mono_jit_runtime_invoke 
-0x00007FF9C5348404 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3068] do_runtime_invoke 
-0x00007FF9C53484F0 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3115] mono_runtime_invoke 
-0x00007FF9BA3FB054 (Unity) scripting_method_invoke
-0x00007FF9BA3D2F63 (Unity) ScriptingInvocation::Invoke
-0x00007FF9BA3CE665 (Unity) ScriptingInvocation::Invoke<void>
-0x00007FF9BA5414F3 (Unity) Scripting::UnityEditor::EditorAssembliesProxy::ProcessInitializeOnLoadAttributes
-0x00007FF9BA3C9D7B (Unity) MonoManager::SetupLoadedEditorAssemblies
-0x00007FF9BA3C164B (Unity) MonoManager::FinalizeReload
-0x00007FF9BB8C7FB5 (Unity) ScriptingInitializer::FinalizeReload
-0x00007FF9BB91785F (Unity) AssetImportWorkerClient::ReloadScriptingDomain
-0x00007FF9BB8F0FA6 (Unity) <lambda_913fef31f054ec157f5d299f70518d4d>::operator()
-0x00007FF9BB9D3DCF (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
-0x00007FF9BB9C14D1 (Unity) asio::detail::win_iocp_io_context::do_one
-0x00007FF9BB9C27DE (Unity) asio::detail::win_iocp_io_context::run
-0x00007FF9BB9D240C (Unity) IOService::Run
-0x00007FF9BB91BAF8 (Unity) RunAssetImportWorkerClientV2
-0x00007FF9BB91BBBB (Unity) RunAssetImporterV2
-0x00007FF9BB14681B (Unity) Application::InitializeProject
-0x00007FF9BB72D4E3 (Unity) UnityMain
-0x00007FF73ACF2F2A (Unity) __scrt_common_main_seh
+0x00007FF9D56E4609 (Unity) EditorMonoConsole::LogToConsoleImplementation
+0x00007FF9D56E52F0 (Unity) EditorMonoConsole::LogToConsoleImplementation
+0x00007FF9D636248D (Unity) DebugStringToFilePostprocessedStacktrace
+0x00007FF9D6361809 (Unity) DebugStringToFile
+0x00007FF9D47ACC1F (Unity) CachedReader::OutOfBoundsError
+0x00007FF9D47ACE90 (Unity) CachedReader::Read
+0x00007FF9D42BE052 (Unity) StreamedBinaryRead::Transfer<core::basic_string<char,core::StringStorageDefault<char> > >
+0x00007FF9D4A4D506 (Unity) MonoBehaviour::Transfer<StreamedBinaryRead>
+0x00007FF9D4A6D12A (Unity) MonoBehaviour::VirtualRedirectTransfer
+0x00007FF9D4B49BC0 (Unity) SerializedFile::ReadObject
+0x00007FF9D4B49306 (Unity) SerializedFile::ReadObject
+0x00007FF9D4B2FEF3 (Unity) PersistentManager::ReadAndActivateObjectThreaded
+0x00007FF9D4B305DB (Unity) PersistentManager::ReadObjectThreaded
+0x00007FF9D4B30367 (Unity) PersistentManager::ReadObject
+0x00007FF9D5807380 (Unity) FindAllAssetsAtPath
+0x00007FF9D41AF692 (Unity) AssetDatabase_CUSTOM_LoadAllAssetsAtPath
+0x000001E43889413A (Mono JIT Code) (wrapper managed-to-native) UnityEditor.AssetDatabase:LoadAllAssetsAtPath_Injected (UnityEngine.Bindings.ManagedSpanWrapper&)
+0x000001E438894013 (Mono JIT Code) UnityEditor.AssetDatabase:LoadAllAssetsAtPath (string)
+0x000001E438893CD3 (Mono JIT Code) [.\Library\PackageCache\com.unity.shadergraph@26dc5ae27e7d\Editor\Data\Util\GraphUtil.cs:210] UnityEditor.ShaderGraph.GraphUtil:TryGetMetadataOfType<T_REF> (UnityEngine.Shader,T_REF&) 
+0x000001E438890EEB (Mono JIT Code) [.\Library\PackageCache\com.unity.render-pipelines.universal@35104b1b69f5\Editor\ShaderUtils.cs:57] Unity.Rendering.Universal.ShaderUtils:GetShaderID (UnityEngine.Shader) 
+0x000001E438890C7B (Mono JIT Code) [.\Library\PackageCache\com.unity.render-pipelines.universal@35104b1b69f5\Editor\ShaderGUI\BaseShaderGUI.cs:811] UnityEditor.BaseShaderGUI:UpdateMotionVectorKeywordsAndPass (UnityEngine.Material) 
+0x000001E438893AEB (Mono JIT Code) [.\Library\PackageCache\com.unity.render-pipelines.universal@35104b1b69f5\Editor\ShaderGUI\ShaderGraphLitGUI.cs:41] UnityEditor.ShaderGraphLitGUI:UpdateMaterial (UnityEngine.Material,Unity.Rendering.Universal.ShaderUtils/MaterialUpdateType) 
+0x000001E4388939E3 (Mono JIT Code) [.\Library\PackageCache\com.unity.render-pipelines.universal@35104b1b69f5\Editor\ShaderGUI\ShaderGraphLitGUI.cs:51] UnityEditor.ShaderGraphLitGUI:ValidateMaterial (UnityEngine.Material) 
+0x000001E43888878C (Mono JIT Code) UnityEditor.ShaderGUIUtility:ValidateMaterial (UnityEngine.Material)
+0x000001E42A1EF998 (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_void_object (object,intptr,intptr,intptr)
+0x00007FF9E5D868DE (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\mini\mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007FF9E5CC8404 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3068] do_runtime_invoke 
+0x00007FF9E5CC84F0 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3115] mono_runtime_invoke 
+0x00007FF9D4A9B054 (Unity) scripting_method_invoke
+0x00007FF9D4A72F63 (Unity) ScriptingInvocation::Invoke
+0x00007FF9D4A6E665 (Unity) ScriptingInvocation::Invoke<void>
+0x00007FF9D4BE4A03 (Unity) Scripting::UnityEditor::ShaderGUIUtilityProxy::ValidateMaterial
+0x00007FF9D4818332 (Unity) Material::SetupKeywordsAndPasses
+0x00007FF9D481B3B2 (Unity) Material::UpdateToNewShader
+0x00007FF9D4816F71 (Unity) Material::SetShader
+0x00007FF9D3C61147 (Unity) Material_Set_Custom_PropShader
+0x000001E43888458D (Mono JIT Code) (wrapper managed-to-native) UnityEngine.Material:set_shader_Injected (intptr,intptr)
+0x000001E4388844CB (Mono JIT Code) UnityEngine.Material:set_shader (UnityEngine.Shader)
+0x000001E4388842BB (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Interaction Toolkit\3.1.3\Starter Assets\Scripts\MaterialPipelineHandler.cs:115] UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.MaterialPipelineHandler:SetPipelineShaders () 
+0x000001E43888408B (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Interaction Toolkit\3.1.3\Starter Assets\Scripts\MaterialPipelineHandler.cs:82] UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.MaterialPipelineHandler:AutoRefreshPipelineShaders () 
+0x000001E438884033 (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Interaction Toolkit\3.1.3\Starter Assets\Scripts\MaterialPipelineHandler.cs:75] UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.MaterialPipelineHandler:OnEnable () 
+0x000001E438883C18 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007FF9E5D868DE (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\mini\mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007FF9E5CC8404 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3068] do_runtime_invoke 
+0x00007FF9E5CC84F0 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3115] mono_runtime_invoke 
+0x00007FF9D4A9B054 (Unity) scripting_method_invoke
+0x00007FF9D4A72F63 (Unity) ScriptingInvocation::Invoke
+0x00007FF9D4A7304E (Unity) ScriptingInvocation::InvokeChecked
+0x00007FF9D4B16878 (Unity) SerializableManagedRef::CallMethod
+0x00007FF9D4A5D4CC (Unity) MonoBehaviour::AwakeFromLoad
+0x00007FF9D4B57E39 (Unity) AwakeFromLoadQueue::InvokePersistentManagerAwake
+0x00007FF9D4B58D9A (Unity) AwakeFromLoadQueue::PersistentManagerSingleQueueAwakeFromLoad
+0x00007FF9D4B589BD (Unity) AwakeFromLoadQueue::PersistentManagerAwakeFromLoad
+0x00007FF9D4B2B8C3 (Unity) PersistentManager::IntegrateAllThreadedObjects
+0x00007FF9D4B2C050 (Unity) PersistentManager::LoadAndIntegrateAllPreallocatedObjects
+0x00007FF9D4B303E7 (Unity) PersistentManager::ReadObject
+0x00007FF9D560A7AA (Unity) LoadAssetAtPath
+0x00007FF9D419AADC (Unity) AssetDatabase_CUSTOM_LoadAssetAtPath
+0x000001E43886DCAD (Mono JIT Code) (wrapper managed-to-native) UnityEditor.AssetDatabase:LoadAssetAtPath_Injected (UnityEngine.Bindings.ManagedSpanWrapper&,System.Type)
+0x000001E43886D84B (Mono JIT Code) UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+0x000001E43886D5AB (Mono JIT Code) UnityEditor.AssetDatabase:LoadAssetAtPath<T_REF> (string)
+0x000001E43887B463 (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Hands\1.6.0\HandVisualizer\Scripts\MaterialPipelineHandler.cs:28] UnityEngine.XR.Hands.Samples.VisualizerSample.RenderPipelineValidation:GetAllInstances () 
+0x000001E43887AFF3 (Mono JIT Code) [C:\Users\fanis\unity-maxmsp\Assets\Samples\XR Hands\1.6.0\HandVisualizer\Scripts\MaterialPipelineHandler.cs:15] UnityEngine.XR.Hands.Samples.VisualizerSample.RenderPipelineValidation:.cctor () 
+0x000001E43887B195 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void (object,intptr,intptr,intptr)
+0x00007FF9E5D868DE (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\mini\mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007FF9E5CC8404 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3068] do_runtime_invoke 
+0x00007FF9E5CC32E5 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:563] mono_runtime_class_init_full 
+0x00007FF9E5BF9F47 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1292] ves_icall_System_Runtime_CompilerServices_RuntimeHelpers_RunClassConstructor 
+0x00007FF9E5C2CADC (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\icall-def.h:756] ves_icall_System_Runtime_CompilerServices_RuntimeHelpers_RunClassConstructor_raw 
+0x000001E428FDFC4A (Mono JIT Code) (wrapper managed-to-native) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (intptr)
+0x000001E428FDFB5B (Mono JIT Code) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+0x000001E428FD7BEB (Mono JIT Code) UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+0x000001E42A1EF998 (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_void_object (object,intptr,intptr,intptr)
+0x00007FF9E5D868DE (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\mini\mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007FF9E5CC8404 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3068] do_runtime_invoke 
+0x00007FF9E5CC84F0 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3115] mono_runtime_invoke 
+0x00007FF9D4A9B054 (Unity) scripting_method_invoke
+0x00007FF9D4A72F63 (Unity) ScriptingInvocation::Invoke
+0x00007FF9D4A6E665 (Unity) ScriptingInvocation::Invoke<void>
+0x00007FF9D4BE14F3 (Unity) Scripting::UnityEditor::EditorAssembliesProxy::ProcessInitializeOnLoadAttributes
+0x00007FF9D4A69D7B (Unity) MonoManager::SetupLoadedEditorAssemblies
+0x00007FF9D4A6164B (Unity) MonoManager::FinalizeReload
+0x00007FF9D5F67FB5 (Unity) ScriptingInitializer::FinalizeReload
+0x00007FF9D5FB785F (Unity) AssetImportWorkerClient::ReloadScriptingDomain
+0x00007FF9D5F90FA6 (Unity) <lambda_913fef31f054ec157f5d299f70518d4d>::operator()
+0x00007FF9D6073DCF (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007FF9D60614D1 (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007FF9D60627DE (Unity) asio::detail::win_iocp_io_context::run
+0x00007FF9D607240C (Unity) IOService::Run
+0x00007FF9D5FBBAF8 (Unity) RunAssetImportWorkerClientV2
+0x00007FF9D5FBBBBB (Unity) RunAssetImporterV2
+0x00007FF9D57E681B (Unity) Application::InitializeProject
+0x00007FF9D5DCD4E3 (Unity) UnityMain
+0x00007FF609EA2F2A (Unity) __scrt_common_main_seh
 0x00007FFA8B71E8D7 (KERNEL32) BaseThreadInitThunk
 0x00007FFA8C58C40C (ntdll) RtlUserThreadStart
 

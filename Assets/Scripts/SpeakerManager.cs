@@ -15,7 +15,7 @@ public class SpeakerManager : MonoBehaviour
     public float uiRowHeight = 100f;
 
     [Header("Speaker Counter")]
-    public int currentSpeakerCount = 0;
+    public int currentSpeakerCount = 3;
 
     // Track speakers by ID so Save/Load can work reliably
     private readonly Dictionary<int, SpeakerPair> _speakers = new();
@@ -27,17 +27,14 @@ public class SpeakerManager : MonoBehaviour
         public SpeakerGainControl gain; // cache for convenience
     }
 
-    // --- Existing button action ---
     public void AddSpeaker()
     {
         int newId = GetNextAvailableId();
         AddSpeakerWithID(newId, null);
     }
 
-    // --- Existing button action ---
     public void RemoveSpeaker()
     {
-        // Remove the highest ID (last-added behavior similar to your current code)
         if (_speakers.Count == 0) return;
 
         int maxId = -1;
@@ -47,7 +44,6 @@ public class SpeakerManager : MonoBehaviour
         RemoveSpeakerById(maxId);
     }
 
-    // --- NEW: remove a specific speaker id ---
     public void RemoveSpeakerById(int id)
     {
         if (!_speakers.TryGetValue(id, out var pair)) return;
@@ -57,7 +53,6 @@ public class SpeakerManager : MonoBehaviour
 
         _speakers.Remove(id);
 
-        // Update counter to reflect "max existing id" (so IDs don't collide)
         currentSpeakerCount = GetMaxExistingId();
 
         RelayoutUI();
@@ -65,7 +60,7 @@ public class SpeakerManager : MonoBehaviour
         Debug.Log($"[SpeakerManager] Removed Speaker {id}. Current max id: {currentSpeakerCount}");
     }
 
-    // --- NEW: clear everything (used for Load) ---
+    // clear everything (used for Load)
     public void ClearAllSpeakers()
     {
         foreach (var kv in _speakers)
@@ -78,7 +73,7 @@ public class SpeakerManager : MonoBehaviour
         Debug.Log("[SpeakerManager] Cleared all speakers.");
     }
 
-    // --- NEW: spawn speaker with a specific ID (used for Load) ---
+    // spawn speaker with a specific ID (used for Load)
     public SpeakerGainControl AddSpeakerWithID(int id, Vector3? worldPosition)
     {
         // Avoid collisions if loading a session with existing speakers
@@ -95,7 +90,6 @@ public class SpeakerManager : MonoBehaviour
         if (gainControl != null)
         {
             gainControl.speakerID = id;
-            // Optional: if your gainControl has a label for speaker number, update it there.
         }
         else
         {
@@ -129,7 +123,7 @@ public class SpeakerManager : MonoBehaviour
         return gainControl;
     }
 
-    // --- NEW: snapshot for saving ---
+    // snapshot for saving
     public List<SpeakerSnapshot> GetSnapshot()
     {
         var list = new List<SpeakerSnapshot>();
@@ -141,7 +135,7 @@ public class SpeakerManager : MonoBehaviour
 
             Vector3 pos = pair.image != null ? pair.image.transform.position : Vector3.zero;
 
-            // You must expose getters for gain/eq/reverb from SpeakerGainControl.
+            // getters for gain/eq/reverb from SpeakerGainControl.
             float mainGain = pair.gain != null ? pair.gain.GetMainGain() : 0f;
             float[] eq = pair.gain != null ? pair.gain.GetEQ6() : new float[6];
             float[] reverb = pair.gain != null ? pair.gain.GetReverb4() : new float[4];
@@ -159,11 +153,9 @@ public class SpeakerManager : MonoBehaviour
         return list;
     }
 
-    // --- Helpers ---
 
     private int GetNextAvailableId()
     {
-        // simplest: next = max+1
         return GetMaxExistingId() + 1;
     }
 
@@ -178,7 +170,6 @@ public class SpeakerManager : MonoBehaviour
     private void RelayoutUI()
     {
         // Order UI by speaker ID top->bottom
-        // (If you prefer spawn order, you can keep your original.)
         var ids = new List<int>(_speakers.Keys);
         ids.Sort();
 
@@ -187,13 +178,12 @@ public class SpeakerManager : MonoBehaviour
             var ui = _speakers[ids[i]].ui;
             if (ui == null) continue;
 
-            // anchored local position; adjust to match your panel setup
             ui.transform.localPosition = new Vector3(0, -(i + 1) * uiRowHeight, 0);
         }
     }
 }
 
-// --- Serializable snapshot types for saving ---
+// Serializable snapshot types for saving 
 [System.Serializable]
 public class SpeakerSnapshot
 {
