@@ -81,8 +81,8 @@ Each speaker has a dedicated gain control UI component.
 ### OSC Message
 
 
-'/vol{id}'
-
+`/vol{id}
+`
 
 Arguments:
 
@@ -93,14 +93,14 @@ Arguments:
 Example:
 
 
-'/vol2 0.8'
-
+`/vol2 0.8
+`
 
 ### Mute Message
 
 
-'/mute{id}
-'
+`/mute{id}
+`
 
 Arguments:
 
