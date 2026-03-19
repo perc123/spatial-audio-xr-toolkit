@@ -1,4 +1,4 @@
-﻿# 3D Spatial Audio Interaction Toolkit
+# 3D Spatial Audio Interaction Toolkit
 
 ## Overview
 
@@ -62,22 +62,24 @@ Max --> Audio
 ### System
 - [System Architecture](01_System_Architecture.md)
 - [OSC Protocol Specification](02_OSC_Protocol.md)
-- [Setup Guide](setup-guide.md)
 
 ### Interaction & Interface
-- [XR Interaction Design](xr-interaction-design.md)
-- [Speaker System](speaker-system.md)
+- [XR Interaction Design](03_XR_Interaction.md)
+- [Speaker System](04_Speaker_System.md)
 
 ### Audio Processing
-- [Equalizer System](equalizer-system.md)
-- [Reverb System](reverb-system.md)
+- [Equalizer System](05_EQ_System.md)
+- [Reverb System](06_Reverb_System.md)
 
 ### Data & Evaluation
-- [Save / Load System](save-load-system.md)
-- [Evaluation Methodology](evaluation-methodology.md)
-- [Development Log](development-log.md)
-## Repository Structure
+- [Save / Load System](07_Save_Load.md)
+- [Evaluation Methodology](08_Evaluation.md)
 
+### Setup & Development Log
+- [Setup Guide](setup-guide.md)
+- [Development Log](10_Development_Log.md)
+
+## Repository Structure
 - **Assets/** — Unity project assets
 - **Packages/** — Unity package dependencies
 - **ProjectSettings/** — Unity configuration
