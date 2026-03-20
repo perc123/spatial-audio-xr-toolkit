@@ -14,6 +14,11 @@ public class SpeakerUI : MonoBehaviour
 
     private int _activeSpeakerId = -1;
 
+    // Dirty-check state — avoids TMP mesh rebuilds when nothing changed
+    private int _lastRenderedSpeakerId = -1;
+    private Vector3 _lastRenderedPos;
+    private string _fmt;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,6 +27,7 @@ public class SpeakerUI : MonoBehaviour
             return;
         }
         Instance = this;
+        _fmt = "F" + decimals;
         RenderIdle();
     }
 
@@ -33,15 +39,12 @@ public class SpeakerUI : MonoBehaviour
 
     public void UpdateActiveSpeakerPose(int speakerId, Vector3 position)
     {
-        // Ignore updates from speakers that aren't currently active
         if (_activeSpeakerId != speakerId) return;
-
         RenderMoving(speakerId, position);
     }
 
     public void ClearActiveSpeaker(int speakerId, Vector3 position)
     {
-        // Only clear if the speaker being released is the active one
         if (_activeSpeakerId == speakerId)
             _activeSpeakerId = -1;
 
@@ -50,7 +53,11 @@ public class SpeakerUI : MonoBehaviour
 
     private void RenderMoving(int speakerId, Vector3 pos)
     {
-        
+        // Skip TMP writes if nothing changed — avoids canvas dirty + mesh rebuild
+        if (_lastRenderedSpeakerId == speakerId && pos == _lastRenderedPos) return;
+        _lastRenderedSpeakerId = speakerId;
+        _lastRenderedPos = pos;
+
         if (ActiveSpeakerText != null)
             ActiveSpeakerText.text = $"Moving speaker: {speakerId}";
 
@@ -60,6 +67,8 @@ public class SpeakerUI : MonoBehaviour
 
     private void RenderIdle()
     {
+        _lastRenderedSpeakerId = -1;
+
         if (ActiveSpeakerText != null)
             ActiveSpeakerText.text = "Moving speaker: -";
 
@@ -67,5 +76,5 @@ public class SpeakerUI : MonoBehaviour
             ActiveLocationText.text = "Location: -";
     }
 
-    private string Fmt(float v) => v.ToString($"F{decimals}");
+    private string Fmt(float v) => v.ToString(_fmt);
 }

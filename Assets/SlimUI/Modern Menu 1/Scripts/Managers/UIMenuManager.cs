@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
@@ -8,7 +8,6 @@ namespace SlimUI.ModernMenu{
 	public class UIMenuManager : MonoBehaviour {
 		private Animator CameraObject;
 
-		// campaign button sub menu
         [Header("MENUS")]
         [Tooltip("The Menu for when the MAIN menu buttons")]
         public GameObject mainMenu;
@@ -44,9 +43,7 @@ namespace SlimUI.ModernMenu{
         public GameObject PanelCombat;
         [Tooltip("The UI Sub-Panel under KEY BINDINGS for GENERAL")]
         public GameObject PanelGeneral;
-        
 
-        // highlights in settings screen
         [Header("SETTINGS SCREEN")]
         [Tooltip("Highlight Image for when GAME Tab is selected in Settings")]
         public GameObject lineGame;
@@ -122,7 +119,7 @@ namespace SlimUI.ModernMenu{
 			if(extrasMenu) extrasMenu.SetActive(false);
 			playMenu.SetActive(true);
 		}
-		
+
 		public void PlayCampaignMobile(){
 			exitMenu.SetActive(false);
 			if(extrasMenu) extrasMenu.SetActive(false);
@@ -143,7 +140,7 @@ namespace SlimUI.ModernMenu{
 			}
 		}
 
-		public void  DisablePlayCampaign(){
+		public void DisablePlayCampaign(){
 			playMenu.SetActive(false);
 		}
 
@@ -233,7 +230,6 @@ namespace SlimUI.ModernMenu{
 			swooshSound.Play();
 		}
 
-		// Are You Sure - Quit Panel Pop Up
 		public void AreYouSure(){
 			exitMenu.SetActive(true);
 			if(extrasMenu) extrasMenu.SetActive(false);
@@ -261,20 +257,26 @@ namespace SlimUI.ModernMenu{
 			#endif
 		}
 
-		// Load Bar synching animation
-		IEnumerator LoadAsynchronously(string sceneName){ // scene name is just the name of the current scene being loaded
+		IEnumerator LoadAsynchronously(string sceneName){
 			AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 			operation.allowSceneActivation = false;
 			mainCanvas.SetActive(false);
 			loadingMenu.SetActive(true);
+
+			// Build prompt string once — avoids per-frame string allocation
+			string promptStr = "Press " + userPromptKey.ToString().ToUpper() + " to continue";
+			bool promptShown = false;
 
 			while (!operation.isDone){
 				float progress = Mathf.Clamp01(operation.progress / .95f);
 				loadingBar.value = progress;
 
 				if (operation.progress >= 0.9f && waitForInput){
-					loadPromptText.text = "Press " + userPromptKey.ToString().ToUpper() + " to continue";
-					loadingBar.value = 1;
+					if(!promptShown){
+						loadPromptText.text = promptStr;
+						loadingBar.value = 1;
+						promptShown = true;
+					}
 
 					if (Input.GetKeyDown(userPromptKey)){
 						operation.allowSceneActivation = true;

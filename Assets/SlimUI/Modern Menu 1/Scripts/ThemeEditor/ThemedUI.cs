@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace SlimUI.ModernMenu{
 	[ExecuteInEditMode()]
@@ -15,8 +15,12 @@ namespace SlimUI.ModernMenu{
 			OnSkinUI();
 		}
 
+		// OnSkinUI is applied once in Awake at runtime.
+		// In the editor it runs every frame so theme changes preview instantly.
 		public virtual void Update(){
+#if UNITY_EDITOR
 			OnSkinUI();
+#endif
 		}
 	}
 }

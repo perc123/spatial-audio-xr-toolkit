@@ -18,13 +18,14 @@ public class EQController : MonoBehaviour
 
     [Header("Fixed band frequencies (Hz)")]
     // 40 Hz, 130 Hz, 550 Hz, 1.6 kHz, 4.3 kHz, 12 kHz
-    public readonly float[] bandFrequenciesHz = new float[6] {0, 1, 2, 3, 4, 5 };
+    public readonly float[] bandFrequenciesHz = new float[6] {0, 1, 2, 3, 4, 5};
 
     [Header("Send behavior")]
     public bool sendAllOnStart = true;
     public float sendEpsilonDb = 0.01f;
 
     private float[] _lastSentGain;
+    private string[] _bandAddresses;
 
     private void Awake()
     {
@@ -44,13 +45,15 @@ public class EQController : MonoBehaviour
             if (transmitter == null)
                 Debug.LogError("[EQController] OSCTransmitter not found in scene!");
         }
-        
+
+        _bandAddresses = new string[6];
+        for (int i = 0; i < 6; i++) _bandAddresses[i] = $"{oscAddressRoot}/{i}";
+
         for (int i = 0; i < 6; i++)
         {
             int band = i;
             var s = bandGainSliders[band];
             if (s == null) continue;
-
             s.onValueChanged.AddListener((gainDb) => OnBandGainChanged(band, gainDb));
         }
 
@@ -68,7 +71,6 @@ public class EQController : MonoBehaviour
 
         float freq = bandFrequenciesHz[bandIndex];
         SendBand(bandIndex, freq, gainDb);
-
         _lastSentGain[bandIndex] = gainDb;
     }
 
@@ -79,9 +81,8 @@ public class EQController : MonoBehaviour
             var s = bandGainSliders[band];
             if (s == null) continue;
 
-            float freq = bandFrequenciesHz[band];
+            float freq   = bandFrequenciesHz[band];
             float gainDb = s.value;
-
             SendBand(band, freq, gainDb);
             _lastSentGain[band] = gainDb;
         }
@@ -89,14 +90,13 @@ public class EQController : MonoBehaviour
 
     private void SendBand(int bandIndex, float freqHz, float gainDb)
     {
-        // Address: /filter/<bandIndex>
-        string address = $"{oscAddressRoot}/{bandIndex}";
-        
-        var msg = new OSCMessage(address);
+        var msg = new OSCMessage(_bandAddresses[bandIndex]);
         msg.AddValue(OSCValue.Float(freqHz));
         msg.AddValue(OSCValue.Float(gainDb));
         transmitter.Send(msg);
 
-        Debug.Log($"[OSC] Sent {address} freq:{freqHz}Hz gain:{gainDb}dB");
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log($"[OSC] Sent {_bandAddresses[bandIndex]} freq:{freqHz}Hz gain:{gainDb}dB");
+#endif
     }
 }

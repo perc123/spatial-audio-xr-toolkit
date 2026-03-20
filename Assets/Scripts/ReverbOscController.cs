@@ -5,14 +5,16 @@ using extOSC;
 public class ReverbOscController : MonoBehaviour
 {
     [Header("OSC (Unity<-Max: 9001, Unity->Max: 6161)")]
-    public OSCTransmitter transmitter; 
-    public OSCReceiver receiver;      
+    public OSCTransmitter transmitter;
+    public OSCReceiver receiver;
 
     [Header("Reverb Sliders (4 params)")]
     public Slider[] reverbSliders = new Slider[4];
 
-    // Prevents feedback loops (Max echoes back what Unity sent)
     private bool _applyingIncoming = false;
+
+    // Pre-computed OSC address strings
+    private string[] _addresses;
 
     private void Awake()
     {
@@ -23,21 +25,21 @@ public class ReverbOscController : MonoBehaviour
     private void Start()
     {
         if (transmitter == null) transmitter = FindObjectOfType<OSCTransmitter>();
-        if (receiver == null) receiver = FindObjectOfType<OSCReceiver>();
+        if (receiver == null)    receiver    = FindObjectOfType<OSCReceiver>();
 
         if (transmitter == null) Debug.LogError("[ReverbOscController] OSCTransmitter missing.");
-        if (receiver == null) Debug.LogError("[ReverbOscController] OSCReceiver missing.");
+        if (receiver == null)    Debug.LogError("[ReverbOscController] OSCReceiver missing.");
 
-        // UI -> Max
+        _addresses = new string[4];
+        for (int i = 0; i < 4; i++) _addresses[i] = $"/reverb/{i}";
+
         for (int i = 0; i < reverbSliders.Length; i++)
         {
             int p = i;
             if (reverbSliders[p] == null) continue;
-
             reverbSliders[p].onValueChanged.AddListener(v => OnSliderChanged(p, v));
         }
 
-        // Max -> Unity
         receiver.Bind("/reverb/0", msg => ApplyIncoming(0, msg));
         receiver.Bind("/reverb/1", msg => ApplyIncoming(1, msg));
         receiver.Bind("/reverb/2", msg => ApplyIncoming(2, msg));
@@ -48,12 +50,13 @@ public class ReverbOscController : MonoBehaviour
     {
         if (_applyingIncoming) return;
 
-        // Send /reverb/<paramIndex> <float>
-        var msg = new OSCMessage($"/reverb/{paramIndex}");
+        var msg = new OSCMessage(_addresses[paramIndex]);
         msg.AddValue(OSCValue.Float(value));
         transmitter.Send(msg);
-        
-        Debug.Log($"[OSC] Sent /reverb/{paramIndex} {value}");
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log($"[OSC] Sent {_addresses[paramIndex]} {value}");
+#endif
     }
 
     private void ApplyIncoming(int paramIndex, OSCMessage msg)
@@ -67,7 +70,9 @@ public class ReverbOscController : MonoBehaviour
         _applyingIncoming = true;
         reverbSliders[paramIndex].value = v;
         _applyingIncoming = false;
-        
-        Debug.Log($"[OSC] Received /reverb/{paramIndex} {v}");
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log($"[OSC] Received {_addresses[paramIndex]} {v}");
+#endif
     }
 }

@@ -8,11 +8,12 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class SpeakerTransformSender : MonoBehaviour
 {
 
-    public int sourceID = 1; // speaker ID
+    public int sourceID = 1;
     public OSCTransmitter transmitter;
 
     private Vector3 lastPosition;
     private float threshold = 0.01f;
+    private float _thresholdSq;
 
     private XRGrabInteractable _grab;
     private bool _isGrabbed;
@@ -20,8 +21,9 @@ public class SpeakerTransformSender : MonoBehaviour
     private void Awake()
     {
         _grab = GetComponent<XRGrabInteractable>();
+        _thresholdSq = threshold * threshold;
     }
-    
+
     private void OnEnable()
     {
         _grab.selectEntered.AddListener(OnSelectEntered);
@@ -33,34 +35,34 @@ public class SpeakerTransformSender : MonoBehaviour
         _grab.selectEntered.RemoveListener(OnSelectEntered);
         _grab.selectExited.RemoveListener(OnSelectExited);
     }
+
     void Update()
     {
-        
-        if (_isGrabbed)
-        {
-            SpeakerUI.Instance?.UpdateActiveSpeakerPose(sourceID, transform.position);
-        }
-        
-        
-        if (transmitter == null) return;
-
         Vector3 pos = transform.position;
 
-        if (Vector3.Distance(pos, lastPosition) > threshold)
+        if ((pos - lastPosition).sqrMagnitude > _thresholdSq)
         {
-            var msg = new OSCMessage("/source/xyz");
-            msg.AddValue(OSCValue.Int(sourceID));
-            msg.AddValue(OSCValue.Float(pos.x/10f)); 
-            msg.AddValue(OSCValue.Float(pos.z/10f)); // reverse y and z because spat accepts them the other way around
-            msg.AddValue(OSCValue.Float(pos.y/10f));
+            if (_isGrabbed)
+                SpeakerUI.Instance?.UpdateActiveSpeakerPose(sourceID, pos);
 
-            transmitter.Send(msg);
+            if (transmitter != null)
+            {
+                var msg = new OSCMessage("/source/xyz");
+                msg.AddValue(OSCValue.Int(sourceID));
+                msg.AddValue(OSCValue.Float(pos.x / 10f));
+                msg.AddValue(OSCValue.Float(pos.z / 10f)); // spat5 expects y and z swapped
+                msg.AddValue(OSCValue.Float(pos.y / 10f));
+                transmitter.Send(msg);
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+                Debug.Log($"[OSC] Sent /source/xyz {sourceID}: ({pos.x}, {pos.y}, {pos.z})");
+#endif
+            }
+
             lastPosition = pos;
-
-            Debug.Log($"[OSC] Sent /source/xyz {sourceID}: ({pos.x}, {pos.y}, {pos.z})");
         }
     }
-    
+
     private void OnSelectEntered(SelectEnterEventArgs args)
     {
         _isGrabbed = true;

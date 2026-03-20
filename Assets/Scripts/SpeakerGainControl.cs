@@ -25,6 +25,12 @@ public class SpeakerGainControl : MonoBehaviour
 
     private bool isMuted = false;
 
+    // Pre-computed OSC address strings — avoids per-event string allocation
+    private string _volAddress;
+    private string _muteAddress;
+    private string[] _eqAddresses;
+    private string[] _revAddresses;
+
     private void Awake()
     {
         if (eqSliders == null || eqSliders.Length != 6) eqSliders = new Slider[6];
@@ -40,13 +46,19 @@ public class SpeakerGainControl : MonoBehaviour
                 Debug.LogError("[SpeakerGainControl] OSCTransmitter not found in scene!");
         }
 
+        _volAddress  = $"/vol{speakerID}";
+        _muteAddress = $"/mute{speakerID}";
+        _eqAddresses  = new string[6];
+        for (int i = 0; i < 6; i++) _eqAddresses[i]  = $"/eq{speakerID}/{i}";
+        _revAddresses = new string[4];
+        for (int i = 0; i < 4; i++) _revAddresses[i] = $"/rev{speakerID}/{i}";
+
         if (speakerNumberText != null)
             speakerNumberText.text = $"Speaker {speakerID}";
 
         if (gainSlider != null)
             UpdateGainLevelText(gainSlider.value);
 
-        // Listeners
         if (gainSlider != null)
             gainSlider.onValueChanged.AddListener(OnSliderValueChanged);
 
@@ -57,7 +69,6 @@ public class SpeakerGainControl : MonoBehaviour
             ApplyMuteState(isMuted, sendOsc: true);
         }
 
-        // EQ + reverb listeners for OSC updates
         HookEQListeners();
         HookReverbListeners();
     }
@@ -90,14 +101,11 @@ public class SpeakerGainControl : MonoBehaviour
         {
             if (gainLevelText != null) gainLevelText.text = "MUTED";
             if (sendOsc) SendMuteValue(true);
-
         }
         else
         {
             if (gainSlider != null) UpdateGainLevelText(gainSlider.value);
             if (sendOsc) SendMuteValue(false);
-
-            // re-send current gain after unmute:
             if (sendOsc && gainSlider != null) SendGainValue(gainSlider.value);
         }
     }
@@ -111,27 +119,27 @@ public class SpeakerGainControl : MonoBehaviour
     private void SendGainValue(float value)
     {
         if (transmitter == null) return;
-
-        var message = new OSCMessage($"/vol{speakerID}");
+        var message = new OSCMessage(_volAddress);
         message.AddValue(OSCValue.Float(value));
         transmitter.Send(message);
-
-        Debug.Log($"[OSC] Sent /vol{speakerID}: {value}");
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log($"[OSC] Sent {_volAddress}: {value}");
+#endif
     }
 
     private void SendMuteValue(bool mute)
     {
         if (transmitter == null) return;
-
-        var message = new OSCMessage($"/mute{speakerID}");
+        var message = new OSCMessage(_muteAddress);
         message.AddValue(OSCValue.Bool(mute));
         transmitter.Send(message);
-
-        Debug.Log($"[OSC] Sent /mute{speakerID}: {mute}");
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log($"[OSC] Sent {_muteAddress}: {mute}");
+#endif
     }
 
     // -----------------------------
-    // EQ (6 bands) - OPTIONAL OSC
+    // EQ (6 bands)
     // -----------------------------
 
     private void HookEQListeners()
@@ -141,7 +149,6 @@ public class SpeakerGainControl : MonoBehaviour
             int band = i;
             var s = eqSliders[band];
             if (s == null) continue;
-
             s.onValueChanged.AddListener((val) => SendEQBand(band, val));
         }
     }
@@ -149,13 +156,12 @@ public class SpeakerGainControl : MonoBehaviour
     private void SendEQBand(int bandIndex, float value)
     {
         if (transmitter == null) return;
-        
-        // /eq{speakerID}/{bandIndex} value
-        var msg = new OSCMessage($"/eq{speakerID}/{bandIndex}");
+        var msg = new OSCMessage(_eqAddresses[bandIndex]);
         msg.AddValue(OSCValue.Float(value));
         transmitter.Send(msg);
-
-        Debug.Log($"[OSC] Sent /eq{speakerID}/{bandIndex}: {value}");
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log($"[OSC] Sent {_eqAddresses[bandIndex]}: {value}");
+#endif
     }
 
     // -----------------------------
@@ -169,7 +175,6 @@ public class SpeakerGainControl : MonoBehaviour
             int p = i;
             var s = reverbSliders[p];
             if (s == null) continue;
-
             s.onValueChanged.AddListener((val) => SendReverbParam(p, val));
         }
     }
@@ -177,14 +182,12 @@ public class SpeakerGainControl : MonoBehaviour
     private void SendReverbParam(int paramIndex, float value)
     {
         if (transmitter == null) return;
-
-      
-        // /rev{speakerID}/{paramIndex} value
-        var msg = new OSCMessage($"/rev{speakerID}/{paramIndex}");
+        var msg = new OSCMessage(_revAddresses[paramIndex]);
         msg.AddValue(OSCValue.Float(value));
         transmitter.Send(msg);
-
-        Debug.Log($"[OSC] Sent /rev{speakerID}/{paramIndex}: {value}");
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log($"[OSC] Sent {_revAddresses[paramIndex]}: {value}");
+#endif
     }
 
     // -----------------------------

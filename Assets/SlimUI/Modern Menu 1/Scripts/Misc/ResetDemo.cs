@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace SlimUI.ModernMenu{
 	public class ResetDemo : MonoBehaviour {
 
 		void Update () {
-			if(Input.GetKeyDown("r")){
+			if(Input.GetKeyDown(KeyCode.R)){
 				SceneManager.LoadScene(0);
 			}
 		}

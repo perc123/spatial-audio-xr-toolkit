@@ -22,13 +22,21 @@ public class FilterBandHandle : MonoBehaviour, IBeginDragHandler, IDragHandler
     [SerializeField] private float minGain = -24f;
     [SerializeField] private float maxGain = 24f;
 
+    [Header("Send throttling")]
+    [SerializeField] private float sendDeltaFreq = 1f;   // Hz — skip send if change smaller than this
+    [SerializeField] private float sendDeltaGain = 0.1f; // dB
+
     private RectTransform _self;
     private bool _allowDrag = true;
+    private string _cachedAddress;
+    private float _lastSentFreq = float.NaN;
+    private float _lastSentGain = float.NaN;
 
     private void Awake()
     {
         _self = GetComponent<RectTransform>();
         if (graphArea == null) graphArea = _self.parent as RectTransform;
+        _cachedAddress = $"{oscAddressRoot}/{bandIndex}";
     }
 
     private void Start()
@@ -39,8 +47,6 @@ public class FilterBandHandle : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // If the drag started on a Slider (or inside one), do NOT move this object.
-        // This prevents fighting with Unity's Slider drag logic (especially in XR).
         _allowDrag = true;
 
         if (eventData.pointerPress != null)
@@ -80,8 +86,14 @@ public class FilterBandHandle : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void SendFilterUpdate(float freq, float gain)
     {
-        string address = $"{oscAddressRoot}/{bandIndex}";
-        var msg = new OSCMessage(address);
+        bool freqChanged = float.IsNaN(_lastSentFreq) || Mathf.Abs(freq - _lastSentFreq) >= sendDeltaFreq;
+        bool gainChanged = float.IsNaN(_lastSentGain) || Mathf.Abs(gain - _lastSentGain) >= sendDeltaGain;
+        if (!freqChanged && !gainChanged) return;
+
+        _lastSentFreq = freq;
+        _lastSentGain = gain;
+
+        var msg = new OSCMessage(_cachedAddress);
         msg.AddValue(OSCValue.Float(freq));
         msg.AddValue(OSCValue.Float(gain));
         transmitter.Send(msg);
