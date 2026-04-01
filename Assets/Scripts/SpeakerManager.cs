@@ -14,6 +14,9 @@ public class SpeakerManager : MonoBehaviour
     [Header("UI Layout")]
     public float uiRowHeight = 100f;
 
+    [Header("XR")]
+    public Transform xrOrigin;
+
     [Header("Speaker Counter")]
     public int currentSpeakerCount = 3;
 
@@ -104,7 +107,15 @@ public class SpeakerManager : MonoBehaviour
         if (worldPosition.HasValue)
             newSpeakerImage.transform.position = worldPosition.Value;
         else
-            newSpeakerImage.transform.localPosition = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+            newSpeakerImage.transform.localPosition = new Vector3(id * 3f, 16f, 14f);
+
+        // Face the XR Origin
+        if (xrOrigin != null)
+        {
+            Vector3 lookDir = xrOrigin.position - newSpeakerImage.transform.position;
+            if (lookDir != Vector3.zero)
+                newSpeakerImage.transform.rotation = Quaternion.LookRotation(lookDir);
+        }
 
         // Store mapping
         _speakers[id] = new SpeakerPair
