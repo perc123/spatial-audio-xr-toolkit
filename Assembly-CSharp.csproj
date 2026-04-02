@@ -86,6 +86,7 @@
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Misc\ResetDemo.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.1.0\URP Package Samples\RendererFeatures\KeepFrame\KeepFrameFeature.cs" />
     <Compile Include="Assets\extOSC\Examples\02) Value Types\Scripts\ValueTypesExample.cs" />
+    <Compile Include="Assets\Scripts\SaveLoadManager.cs" />
     <Compile Include="Assets\Scripts\SessionData.cs" />
     <Compile Include="Assets\extOSC\Examples\09) Address Masks\Scripts\AddressMaskExample.cs" />
     <Compile Include="Assets\Scripts\SpeakerUI.cs" />

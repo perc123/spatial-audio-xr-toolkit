@@ -134,16 +134,12 @@ public class SpeakerManager : MonoBehaviour
             Vector3 pos = pair.go != null ? pair.go.transform.position : Vector3.zero;
 
             float mainGain = pair.gain != null ? pair.gain.GetMainGain() : 0f;
-            float[] eq = pair.gain != null ? pair.gain.GetEQ6() : new float[6];
-            float[] reverb = pair.gain != null ? pair.gain.GetReverb4() : new float[4];
 
             list.Add(new SpeakerSnapshot
             {
                 id = id,
                 posX = pos.x, posY = pos.y, posZ = pos.z,
                 mainGain = mainGain,
-                eq6 = eq,
-                reverb4 = reverb
             });
         }
 
