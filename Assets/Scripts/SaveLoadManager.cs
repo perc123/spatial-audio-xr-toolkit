@@ -39,7 +39,7 @@ public class SaveLoadManager : MonoBehaviour
             return;
         }
 
-        speakerManager.ClearAllSpeakers();
+        speakerManager.ClearAllSpeakers(); // Clear everything before loading new
 
         foreach (var s in session.speakers)
         {
