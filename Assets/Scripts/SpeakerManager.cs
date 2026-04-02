@@ -4,15 +4,7 @@ using UnityEngine;
 public class SpeakerManager : MonoBehaviour
 {
     [Header("Prefabs")]
-    public GameObject speakerUIPrefab;    // SpeakerGain UI Prefab
-    public GameObject speakerImagePrefab; // 3D Speaker Image Prefab
-
-    [Header("Parent Transforms")]
-    public Transform uiParent;
-    public Transform imageParent;
-
-    [Header("UI Layout")]
-    public float uiRowHeight = 100f;
+    public GameObject speakerPrefab;
 
     [Header("XR")]
     public Transform xrOrigin;
@@ -25,9 +17,8 @@ public class SpeakerManager : MonoBehaviour
 
     private class SpeakerPair
     {
-        public GameObject ui;
-        public GameObject image;
-        public SpeakerGainControl gain; // cache for convenience
+        public GameObject go;
+        public SpeakerGainControl gain;
     }
 
     public void AddSpeaker()
@@ -51,16 +42,11 @@ public class SpeakerManager : MonoBehaviour
     {
         if (!_speakers.TryGetValue(id, out var pair)) return;
 
-        if (pair.ui != null) Destroy(pair.ui);
-        if (pair.image != null) Destroy(pair.image);
+        if (pair.go != null) Destroy(pair.go);
 
         _speakers.Remove(id);
 
-        currentSpeakerCount = GetMaxExistingId();
-
-        RelayoutUI();
-
-        Debug.Log($"[SpeakerManager] Removed Speaker {id}. Current max id: {currentSpeakerCount}");
+        Debug.Log($"[SpeakerManager] Removed Speaker {id}.");
     }
 
     // clear everything (used for Load)
@@ -68,11 +54,9 @@ public class SpeakerManager : MonoBehaviour
     {
         foreach (var kv in _speakers)
         {
-            if (kv.Value.ui != null) Destroy(kv.Value.ui);
-            if (kv.Value.image != null) Destroy(kv.Value.image);
+            if (kv.Value.go != null) Destroy(kv.Value.go);
         }
         _speakers.Clear();
-        currentSpeakerCount = 0;
         Debug.Log("[SpeakerManager] Cleared all speakers.");
     }
 
@@ -86,51 +70,54 @@ public class SpeakerManager : MonoBehaviour
             return _speakers[id].gain;
         }
 
-        // Instantiate UI
-        GameObject newSpeakerUI = Instantiate(speakerUIPrefab, uiParent);
+        GameObject newSpeaker = Instantiate(speakerPrefab);
+        newSpeaker.name = $"Speaker_{id}";
 
-        var gainControl = newSpeakerUI.GetComponent<SpeakerGainControl>();
+        var gainControl = newSpeaker.GetComponent<SpeakerGainControl>();
         if (gainControl != null)
-        {
             gainControl.speakerID = id;
-        }
         else
-        {
-            Debug.LogError("[SpeakerManager] SpeakerUIPrefab missing SpeakerGainControl component.");
-        }
-
-        // Instantiate 3D Image
-        GameObject newSpeakerImage = Instantiate(speakerImagePrefab, imageParent);
-        newSpeakerImage.name = $"SpeakerImage_{id}";
-
-        // Set position
-        if (worldPosition.HasValue)
-            newSpeakerImage.transform.position = worldPosition.Value;
-        else
-            newSpeakerImage.transform.localPosition = new Vector3(id * 3f, 16f, 14f);
-
-        // Face the XR Origin
-        if (xrOrigin != null)
-        {
-            Vector3 lookDir = xrOrigin.position - newSpeakerImage.transform.position;
-            if (lookDir != Vector3.zero)
-                newSpeakerImage.transform.rotation = Quaternion.LookRotation(lookDir);
-        }
+            Debug.LogError("[SpeakerManager] speakerPrefab missing SpeakerGainControl component.");
 
         // Store mapping
-        _speakers[id] = new SpeakerPair
-        {
-            ui = newSpeakerUI,
-            image = newSpeakerImage,
-            gain = gainControl
-        };
+        _speakers[id] = new SpeakerPair { go = newSpeaker, gain = gainControl };
 
-        // Keep counter in sync (max id)
+        // Keep counter in sync
         if (id > currentSpeakerCount) currentSpeakerCount = id;
 
-        RelayoutUI();
+        // Set position — x starts at 10, +5 per sorted index; y fixed at 16; z fixed at 10
+        if (worldPosition.HasValue)
+        {
+            newSpeaker.transform.position = worldPosition.Value;
+        }
+        else
+        {
+            var sortedIds = new List<int>(_speakers.Keys);
+            sortedIds.Sort();
+            int index = sortedIds.IndexOf(id);
+            newSpeaker.transform.position = new Vector3(10f + index * 5f, 16f, 10f);
+        }
 
-        Debug.Log($"[SpeakerManager] Added Speaker {id} (UI + Image).");
+        // x is always -90; y and z are derived from LookRotation toward XR Origin
+        if (xrOrigin != null)
+        {
+            Vector3 lookDir = xrOrigin.position - newSpeaker.transform.position;
+            if (lookDir != Vector3.zero)
+            {
+                Vector3 euler = Quaternion.LookRotation(lookDir).eulerAngles;
+                newSpeaker.transform.rotation = Quaternion.Euler(-90f, euler.y, euler.z);
+            }
+            else
+            {
+                newSpeaker.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+            }
+        }
+        else
+        {
+            newSpeaker.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+        }
+
+        Debug.Log($"[SpeakerManager] Added Speaker {id}.");
         return gainControl;
     }
 
@@ -144,9 +131,8 @@ public class SpeakerManager : MonoBehaviour
             int id = kv.Key;
             var pair = kv.Value;
 
-            Vector3 pos = pair.image != null ? pair.image.transform.position : Vector3.zero;
+            Vector3 pos = pair.go != null ? pair.go.transform.position : Vector3.zero;
 
-            // getters for gain/eq/reverb from SpeakerGainControl.
             float mainGain = pair.gain != null ? pair.gain.GetMainGain() : 0f;
             float[] eq = pair.gain != null ? pair.gain.GetEQ6() : new float[6];
             float[] reverb = pair.gain != null ? pair.gain.GetReverb4() : new float[4];
@@ -164,37 +150,17 @@ public class SpeakerManager : MonoBehaviour
         return list;
     }
 
-
     private int GetNextAvailableId()
     {
-        return GetMaxExistingId() + 1;
-    }
-
-    private int GetMaxExistingId()
-    {
-        int maxId = 0;
+        // Always start above currentSpeakerCount (default 3 → first ID is 4)
+        int maxId = currentSpeakerCount;
         foreach (var id in _speakers.Keys)
             if (id > maxId) maxId = id;
-        return maxId;
-    }
-
-    private void RelayoutUI()
-    {
-        // Order UI by speaker ID top->bottom
-        var ids = new List<int>(_speakers.Keys);
-        ids.Sort();
-
-        for (int i = 0; i < ids.Count; i++)
-        {
-            var ui = _speakers[ids[i]].ui;
-            if (ui == null) continue;
-
-            ui.transform.localPosition = new Vector3(0, -(i + 1) * uiRowHeight, 0);
-        }
+        return maxId + 1;
     }
 }
 
-// Serializable snapshot types for saving 
+// Serializable snapshot types for saving
 [System.Serializable]
 public class SpeakerSnapshot
 {
