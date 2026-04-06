@@ -33,9 +33,9 @@ public class UserTransformSender : MonoBehaviour
         if (posChanged || rotChanged)
         {
             var posMsg = new OSCMessage("/listener/xyz");
-            posMsg.AddValue(OSCValue.Float(pos.x));
-            posMsg.AddValue(OSCValue.Float(pos.z)); // spat5 expects y and z swapped
-            posMsg.AddValue(OSCValue.Float(pos.y));
+            posMsg.AddValue(OSCValue.Float(pos.x / 10f));
+            posMsg.AddValue(OSCValue.Float(pos.y / 10f));
+            posMsg.AddValue(OSCValue.Float(pos.z / 10f));
             transmitter.Send(posMsg);
 
             Vector3 euler = rot.eulerAngles;
