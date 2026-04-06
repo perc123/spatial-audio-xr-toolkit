@@ -135,12 +135,22 @@ public class SpeakerManager : MonoBehaviour
 
             float mainGain = pair.gain != null ? pair.gain.GetMainGain() : 0f;
 
-            list.Add(new SpeakerSnapshot
+            var snap = new SpeakerSnapshot
             {
                 id = id,
                 posX = pos.x, posY = pos.y, posZ = pos.z,
                 mainGain = mainGain,
-            });
+            };
+
+            var state = pair.go != null ? pair.go.GetComponent<SpeakerState>() : null;
+            if (state != null)
+            {
+                var data = state.ToData();
+                snap.eq6     = data.eq;
+                snap.reverb4 = data.reverb;
+            }
+
+            list.Add(snap);
         }
 
         return list;

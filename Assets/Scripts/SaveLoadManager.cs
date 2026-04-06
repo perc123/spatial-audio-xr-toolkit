@@ -51,6 +51,19 @@ public class SaveLoadManager : MonoBehaviour
             if (gainControl != null)
             {
                 gainControl.SetMainGain(s.mainGain);
+
+                var state = gainControl.GetComponent<SpeakerState>();
+                if (state != null)
+                {
+                    state.ApplyData(new SpeakerData
+                    {
+                        id       = s.id,
+                        posX     = s.posX, posY = s.posY, posZ = s.posZ,
+                        mainGain = s.mainGain,
+                        eq       = s.eq6,
+                        reverb   = s.reverb4,
+                    }, updateUIText: false);
+                }
             }
         }
 
