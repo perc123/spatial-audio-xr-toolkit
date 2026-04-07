@@ -61,6 +61,11 @@ public class EQController : MonoBehaviour
             SendAllBands();
     }
 
+    // Max's filtergraph~ setfilter expects gain as an amplitude ratio (log scale),
+    // not dB. 0 dB = 1.0, +18 dB ≈ 7.94, -18 dB ≈ 0.126.
+    // Sliders remain in dB (linear, symmetric) for the user; we convert on send.
+    private static float DbToAmplitude(float db) => Mathf.Pow(10f, db / 20f);
+
     private void OnBandGainChanged(int bandIndex, float gainDb)
     {
         if (transmitter == null) return;
@@ -88,15 +93,18 @@ public class EQController : MonoBehaviour
         }
     }
 
-    private void SendBand(int bandIndex, float freqHz, float gainDb)
+    private void SendBand(int bandIndex, float bandNum, float gainDb)
     {
+        // Convert dB → amplitude for filtergraph~ (log scale: above 0 = boost >1.0, below 0 = cut <1.0)
+        float amplitude = DbToAmplitude(gainDb);
+
         var msg = new OSCMessage(_bandAddresses[bandIndex]);
-        msg.AddValue(OSCValue.Float(freqHz));
-        msg.AddValue(OSCValue.Float(gainDb));
+        msg.AddValue(OSCValue.Float(bandNum));
+        msg.AddValue(OSCValue.Float(amplitude));
         transmitter.Send(msg);
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
-        Debug.Log($"[OSC] Sent {_bandAddresses[bandIndex]} freq:{freqHz}Hz gain:{gainDb}dB");
+        Debug.Log($"[OSC] Sent {_bandAddresses[bandIndex]} Band:{bandNum} gain:{gainDb}dB (amp:{amplitude:F4})");
 #endif
     }
 }
