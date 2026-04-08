@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\UserTransformSender.cs" />
     <Compile Include="Assets\Scripts\SpeakerInfo.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Misc\ExtraLinks.cs" />
+    <Compile Include="Assets\Scripts\SaveLoadUI.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.1.0\URP Package Samples\RendererFeatures\DistortTunnel\DistortTunnelPass_Distort.cs" />
     <Compile Include="Assets\extOSC\Examples\12) Match Pattern\Scripts\MatchPatternExample.cs" />
     <Compile Include="Assets\Scripts\EQController.cs" />
