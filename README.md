@@ -33,7 +33,7 @@ The separation between *interaction* and *computation* is intentional: Unity han
 
 ## AR interaction design
 
-![AR interaction](docs/images/02-ar-interaction.png)
+![AR interaction](images/02-ar-interaction.png)
 
 Built with Unity's XR Interaction Toolkit on Oculus Quest 3 (passthrough AR).
 
@@ -46,7 +46,7 @@ Built with Unity's XR Interaction Toolkit on Oculus Quest 3 (passthrough AR).
 
 ## OSC communication
 
-![OSC signal flow](docs/images/03-osc-signal-flow.png)
+![OSC signal flow](images/03-osc-signal-flow.png)
 
 The control link uses hierarchical OSC addressing and a dual transmission policy:
 
@@ -67,7 +67,7 @@ This split keeps the control bandwidth tight without sacrificing the perceptual 
 
 ## Audio engine: Max/MSP + IRCAM spat5
 
-![Audio engine signal chain](docs/images/04-audio-engine.png)
+![Audio engine signal chain](images/04-audio-engine.png)
 
 Signal chain inside Max/MSP:
 
@@ -83,7 +83,7 @@ Audio Source  →  Audio Effects  →  Spatialization  →  Binaural Output
 
 ## Key technical contribution: inverse source transformation
 
-![Inverse source transformation](docs/images/05-inverse-source-transformation.png)
+![Inverse source transformation](images/05-inverse-source-transformation.png)
 
 The engineering-defining moment of the thesis. Two problems collided:
 
@@ -102,7 +102,7 @@ The result: spat5 still believes the listener is fixed, but the user experiences
 
 ## Save / load — session persistence
 
-![Session persistence](docs/images/06-session-persistence.png)
+![Session persistence](images/06-session-persistence.png)
 
 Runtime state is captured to a serializable data model (POCO / data class via `JsonUtility`) and written to JSON on disk via `Application.persistentDataPath`. On load, the JSON is parsed, speaker objects are respawned, transforms and parameters are reapplied, and the UI reflects the restored session.
 
@@ -163,13 +163,11 @@ Headline findings:
 ```
 .
 ├── docs/
-│   └── images/             — architecture and interaction diagrams (this README)
+├── images/             — architecture and interaction diagrams (this README)
 ├── unity/                  — Unity XR project (to add)
 ├── max/                    — Max/MSP patches with spat5 (to add)
 └── README.md
 ```
-
-> **Status**: Documentation and diagrams are public. The Unity project and Max patches are not yet published here — see the *About sharing the code* section below.
 
 ---
 
