@@ -5905,7 +5905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &867692752
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7387,7 +7387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1107893702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10446,7 +10446,7 @@ MonoBehaviour:
   _localReceiver: {fileID: 0}
   _localHost: 10.5.0.2
   _localPort: 7000
-  _remoteHost: 10.245.236.102
+  _remoteHost: 10.238.68.35
   _remotePort: 6161
   _useBundle: 0
 --- !u!4 &1515427252
@@ -15010,19 +15010,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2118111359}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 551451568}
-        m_TargetAssemblyTypeName: SaveLoadUI, Assembly-CSharp
-        m_MethodName: OnLoadClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2118111359
 MonoBehaviour:
   m_ObjectHideFlags: 0
