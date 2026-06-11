@@ -1,200 +1,189 @@
-# 3D Spatial Audio Interaction Toolkit  
-### Unity XR Interface ↔ Max/MSP Spatial Audio Engine (OSC)
+# A 3D User Interface for Real-Time Spatial Audio Control
 
-## Overview
+> Bachelor thesis project — HTW Berlin, *Informatik in Kultur und Gesundheit* (2025).
+> Supervisors: Prof. Dr.-Ing. Johann Habakuk Israel, Sebastian Keppler.
 
-This project explores a **human-centered 3D user interface for spatial audio design** in immersive environments.  
-A Unity XR application allows users to position virtual loudspeakers, control gain, equalization, and reverberation parameters in real time, while communicating with a **Max/MSP spatial audio engine** via OSC.
+A hybrid AR + DSP system that lets a user shape a spatial audio scene in real time, in 3D, from inside the scene. A Unity XR application on Oculus Quest 3 (passthrough AR) provides the interaction layer; a Max/MSP patch with IRCAM **spat5** provides the audio engine; the two communicate over **OSC** in real time.
 
-The goal is to investigate intuitive interaction techniques for spatial sound design workflows, particularly in contexts such as concert hall simulation, music production, and immersive media.
-
-This project is developed as part of a **Bachelor Thesis** at HTW Berlin (Informatik in Kultur und Gesundheit).
+The thesis investigates whether moving spatial audio control out of 2D DAW interfaces and into an embodied 3D UI makes spatial sound design more intuitive without compromising audio quality.
 
 ---
 
-## Main Features
+## Why this exists
 
-- 3D speaker positioning in XR space  
-- Per-speaker gain control  
-- 6-band graphical equalizer interface  
-- Reverb parameter control  
-- Real-time listener position & rotation tracking  
-- Bidirectional OSC communication (Unity ↔ Max)  
-- Save / Load spatial audio setups  
-- Human-centered XR hand-menu interface  
+Spatial audio is fundamentally three-dimensional, but the tools to shape it are not — they sit inside 2D DAWs and assume the user has expert DSP knowledge. This project explores whether immersive AR can close that gap: a head-tracked, body-anchored UI for placing sources, shaping their tone, and walking through the scene while it sounds, with binaural rendering live in the headphones.
+
+The system was evaluated through a small qualitative user study (n=4) and produced a working hybrid AR–DSP prototype with a novel coordinate-transformation contribution (see *Key technical contribution* below).
 
 ---
 
-## System Architecture
+## System architecture
 
-The system consists of two main components:
+![System architecture](docs/images/01-architecture.png)
 
-1. **Unity XR Application**
-2. **Max/MSP Spatial Audio Engine**
+Three components, cleanly separated:
 
-The communication between both systems is implemented via **OSC over UDP**.
+- **Unity (XR)** — interaction and visualization on Oculus Quest 3, passthrough AR.
+- **OSC over UDP** — real-time control transport between Unity and Max/MSP.
+- **Max/MSP + IRCAM spat5** — audio effects, spatialization, and HRTF-based binaural rendering.
 
-### Interaction Flow
-
-- The user interacts with virtual speakers and UI controls inside Unity.
-- Unity sends spatial and parameter data via OSC.
-- Max receives the data and performs spatial audio processing.
-- The processed audio is rendered binaurally or through loudspeakers.
-
-### Data Flow Overview
-#### User (XR Interaction)
-
-    ↓
-
-#### Unity Interaction & Visualization Layer
-
-    ↓ 
-
-#### OSC (UDP) Max/MSP Spatial Audio Engine (spat5)
-
-    ↓
-
-#### Binaural Rendering / Loudspeaker Output
-
-
-### Responsibilities
-
-**Unity handles:**
-
-- XR interaction
-- UI rendering
-- speaker visualization
-- OSC transmission
-- scene serialization
-
-**Max handles:**
-
-- spatialization (spat5)
-- EQ processing
-- reverb processing
-- audio rendering
-
-## Requirements
-
-### Unity
-
-- Unity 6.x (or compatible LTS)
-- XR Interaction Toolkit
-- XR Hands / Meta XR (optional)
-- extOSC
-
-### Max
-
-- Max 8.x
-- CNMAT OSC externals
-- spat5 library
+The separation between *interaction* and *computation* is intentional: Unity handles only what needs the headset; the DSP runs on a host PC where Max/MSP is at home. The OSC link is the only contract between them.
 
 ---
 
-## How to Run
+## AR interaction design
 
-### Unity Side
+![AR interaction](docs/images/02-ar-interaction.png)
 
-1. Open the project in Unity.
-2. Ensure OSC Transmitter settings:
-   - Remote Host = IP of Max computer
-   - Remote Port = `6161`
-3. Press **Play** (XR Device Simulator supported).
-4. For standalone deployment, build to Quest.
+Built with Unity's XR Interaction Toolkit on Oculus Quest 3 (passthrough AR).
 
-### Max Side
-
-1. Open the main spatial audio patch.
-2. Ensure UDP receive port:
-[udpreceive 6161]
-
-
-3. Verify OSC routing and spat5 initialization.
-4. Confirm audio output configuration.
+- **Interaction**: ray-based pointing + trigger grab for translational and rotational manipulation of virtual speakers.
+- **Body-anchored UI**: control panel rigidly attached to the left controller, which solved the floating-panel problem identified in pilot testing.
+- **Tabs**: Home / Save-Load / FX / Speaker Position.
+- **Visual feedback**: hover and selection highlighting to reduce accidental manipulation.
 
 ---
 
-## OSC Communication
+## OSC communication
 
-### Listener
+![OSC signal flow](docs/images/03-osc-signal-flow.png)
 
-| Address | Description |
-|--------|-------------|
-| `/listener/xyz` | Listener position (x y z) |
-| `/listener/ypr` | Listener rotation (yaw pitch roll) |
+The control link uses hierarchical OSC addressing and a dual transmission policy:
 
-### Speaker
+- **Spatial data** (positions, rotations) — sent continuously while interaction is active.
+- **Parameters** (EQ bands, reverb, source enable) — sent on change, not periodically.
 
-| Address | Description |
-|--------|-------------|
-| `/source/{id}/xyz` | Speaker position |
-| `/vol{id}` | Speaker gain |
+Example addresses:
 
-### Equalizer
+```
+/source/3/xyz       1.20 0.85 -2.10
+/filter/2/gain      -3.5
+/reverb/1/decay     1.8
+```
 
-| Address | Description |
-|--------|-------------|
-| `/filter/{band}` | EQ band update (frequency gain) |
-
-### Reverb
-
-| Address | Description |
-|--------|-------------|
-| `/reverb/{param}` | Reverb parameter control |
+This split keeps the control bandwidth tight without sacrificing the perceptual continuity of position updates.
 
 ---
 
-## Save / Load System
+## Audio engine: Max/MSP + IRCAM spat5
 
-Speaker configurations are serialized including:
+![Audio engine signal chain](docs/images/04-audio-engine.png)
 
-- Speaker ID  
-- Position  
-- Gain value  
-- 6 EQ band values  
-- Reverb parameters  
+Signal chain inside Max/MSP:
 
-This enables reconstruction of spatial audio scenes for evaluation and experimentation.
+```
+Audio Source  →  Audio Effects  →  Spatialization  →  Binaural Output
+```
 
----
-
-## XR Interaction Design
-
-The interface is implemented as a **hand-held menu panel** containing multiple UI pages:
-
-- Home page  
-- Save / Load page  
-- Filter (EQ) page  
-- Speaker Position page  
-
-Users can:
-
-- Grab and reposition speakers in 3D space  
-- Adjust audio parameters via sliders  
-- Observe spatial layout visually  
+- **6-band parametric EQ** — `cascade~` + `filtergraph~`.
+- **Reverb** — size, decay time, high-frequency damping, diffusion.
+- **Binaural rendering** — HRTF-based, using IRCAM spat5's HRTF database, so the perceived 3D position works over standard headphones.
 
 ---
 
-## Thesis Context
+## Key technical contribution: inverse source transformation
 
-This prototype supports research into:
+![Inverse source transformation](docs/images/05-inverse-source-transformation.png)
 
-- usability of 3D spatial audio interfaces  
-- spatial cognition in XR environments  
-- real-time audio design workflows  
-- integration of game engines with DSP environments  
+The engineering-defining moment of the thesis. Two problems collided:
+
+1. **spat5 assumes a fixed listener position.** It is built around the model where sources move around a stationary head, which is the wrong assumption when the user is walking around inside the scene with a headset on.
+2. **Unity and spat5 use different coordinate systems.** Y-up versus Z-up, left-handed versus right-handed, with axes swapped.
+
+The solution is an **inverse source transformation** layer between Unity and spat5:
+
+- User moves forward → all sources move backward by the same amount.
+- User rotates → all sources rotate inversely around the listener.
+- A coordinate-mapping matrix translates Unity space into spat5 space at every update.
+
+The result: spat5 still believes the listener is fixed, but the user experiences full head-tracked spatial audio that responds to walking and rotating in the room.
+
+---
+
+## Save / load — session persistence
+
+![Session persistence](docs/images/06-session-persistence.png)
+
+Runtime state is captured to a serializable data model (POCO / data class via `JsonUtility`) and written to JSON on disk via `Application.persistentDataPath`. On load, the JSON is parsed, speaker objects are respawned, transforms and parameters are reapplied, and the UI reflects the restored session.
+
+Stored fields:
+
+- Speaker positions and rotations.
+- 6-band EQ bands (frequency + gain per band).
+- Reverb and delay parameters.
+
+---
+
+## Evaluation
+
+Small qualitative user study, n = 4 participants, 20–30 minute sessions on the full hardware setup (Quest 3 + headphones + host PC running Max/MSP). Tasks: speaker positioning, EQ adjustment, spatial exploration.
+
+Headline findings:
+
+- **Spatial interaction** read as intuitive across all participants.
+- **Audio feedback** was essential — silent positioning felt disconnected.
+- **Cognitive load** was high but manageable for participants with prior spatial audio experience.
+- **Satisfaction** was positive overall.
+
+---
+
+## Limitations (honest)
+
+- Small evaluation sample (n=4) — qualitative signal only, not a controlled study.
+- **The inverse listener model is a workaround**, not a primitive. Native moving-listener support in spat5 would eliminate the ambiguity at extreme distances or rotations.
+- The full hardware footprint (Quest 3 + host PC + headphones) makes the system best suited for rehearsal/studio use rather than performance.
+- No live audio output representation in Unity — the user hears the spat5 output via headphones but the Unity side has no visual indicator of audio activity.
+
+---
+
+## Future work
+
+- Unity-side audio output representation (visual feedback for audio activity in the scene).
+- Native moving-listener support in spat5, eliminating the inverse-transform workaround.
+- Individualized HRTFs for better elevation perception.
+- Hand tracking instead of controller-based interaction.
+- A larger, controlled user study with quantitative performance benchmarks.
+
+---
+
+## Stack
+
+| Layer | Tech |
+|---|---|
+| XR runtime | Unity 2022.x, XR Interaction Toolkit, OpenXR |
+| Hardware | Oculus Quest 3 (passthrough AR), wired headphones, host PC |
+| Transport | OSC over UDP (Quest 3 ↔ host PC over Wi-Fi) |
+| DSP | Max/MSP, IRCAM spat5, `cascade~`, `filtergraph~` |
+| Persistence | JSON via Unity `JsonUtility`, `Application.persistentDataPath` |
+
+---
+
+## Repository contents
+
+```
+.
+├── docs/
+│   └── images/             — architecture and interaction diagrams (this README)
+├── unity/                  — Unity XR project (to add)
+├── max/                    — Max/MSP patches with spat5 (to add)
+└── README.md
+```
+
+> **Status**: Documentation and diagrams are public. The Unity project and Max patches are not yet published here — see the *About sharing the code* section below.
+
+---
+
+## About sharing the code
+
+This is an academic thesis project. The Unity scripts and Max/MSP patches will be added incrementally, with third-party assets (IRCAM spat5 itself, paid Unity packages) excluded for licensing reasons.
+
+For a live demonstration video or to discuss the implementation in detail, please get in touch — links below.
 
 ---
 
 ## Author
 
-Theofanis Gkioles Blatsoukas  
-HTW Berlin  
-Bachelor Thesis – Informatik in Kultur und Gesundheit  
+**Fanis Gioles** — Berlin
+[fanisgioles.com](https://www.fanisgioles.com) · [LinkedIn](https://linkedin.com/in/fanis-gioles) · fanis.gioles@gmail.com
 
----
-
-## License
-
-Academic research prototype.  
-
+Created at HTW Berlin, 2025. Supervisors: Prof. Dr.-Ing. Johann Habakuk Israel, Sebastian Keppler.
