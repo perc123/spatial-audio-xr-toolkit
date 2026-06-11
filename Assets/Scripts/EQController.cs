@@ -93,7 +93,7 @@ public class EQController : MonoBehaviour
         }
     }
 
-    private void SendBand(int bandIndex, float bandNum, float gainDb)
+    private void SendBand(int bandIndex, float banclaudedNum, float gainDb)
     {
         // Convert dB → amplitude for filtergraph~ (log scale: above 0 = boost >1.0, below 0 = cut <1.0)
         float amplitude = DbToAmplitude(gainDb);
