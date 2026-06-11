@@ -19,7 +19,7 @@ The system was evaluated through a small qualitative user study (n=4) and produc
 
 ## System architecture
 
-![System architecture](docs/images/01-architecture.png)
+![System architecture](images/01-architecture.png)
 
 Three components, cleanly separated:
 
